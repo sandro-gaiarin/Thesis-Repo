@@ -9,10 +9,10 @@ public class SecuritySystem : MonoBehaviour
     // Trigger collision with player unit
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Collision detected");
 
-        Debug.Log("Collison detected");
-        // Check if the colliding object is a player unit
-        if (other.CompareTag("PlayerUnit"))
+        // Check if the colliding object is a player unit with the name "Hacker"
+        if (other.CompareTag("PlayerUnit") && other.gameObject.name == "Hacker")
         {
             // Add 10 turns to the round counter
             turnManager.GetComponent<TurnManager>().roundCounter += 10;

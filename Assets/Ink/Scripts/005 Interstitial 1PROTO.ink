@@ -1,3 +1,4 @@
+EXTERNAL loadScene(sceneName)
 // I THINK this is how the variable call should look
 VAR docSet1 = 1
 //This all works, you just need to replace the two with something that reads a variable from unity on how many docs we picked up.
@@ -51,6 +52,6 @@ Janet: Hunter, you’ve been here for 10 minutes with me. If you weren’t ready
 Hunter: I guess… # hunter
 Janet: So, [Player], shall we head on in? # Janet
 Player: Let’s do this. # player
-
+~ loadScene("warehouse2")
     -> END
 

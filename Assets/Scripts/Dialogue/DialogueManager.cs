@@ -60,6 +60,7 @@ public class DialogueManager : MonoBehaviour
 
         currentStory.BindExternalFunction("loadScene", (string sceneName) =>
         {
+            Debug.Log("Load scene called with " + sceneName);
             SceneManager.LoadScene(sceneName);
         });
 
