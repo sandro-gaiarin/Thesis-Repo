@@ -1,8 +1,11 @@
+EXTERNAL loadScene(sceneName)
+
 -> opening
 ==opening==
 I don’t know what I was expecting. Nothing in the news is ever good these days. # playerthoughts
 I wonder when mom is gonna be back… Things are starting to get scary out there. # playerthoughts
 [Knock-knock] # ambient
+
 I think someone might be at the door # playerthoughts
 [BANG] # ambient
 Or in the house now! I should go check on that. # playerthoughts
@@ -99,6 +102,10 @@ Hunter: Quick… okay, I can get behind that. The sooner we’re outta here the 
 Janet: And we have to be ready to fight if we need to. # Janet
 Player: Fight? # player
 Janet: We’re not supposed to be here. And if whoever’s running this place took your mom, they’re probably going to want to deal with us themselves. # Janet
-Hunter: Is it too late to back out? # hunter
+Hunter: Is it too late to back out?
+# hunter
+
+~ loadScene("SampleScene")
+
 
     -> END
