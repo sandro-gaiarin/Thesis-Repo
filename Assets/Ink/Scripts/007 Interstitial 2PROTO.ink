@@ -3,7 +3,7 @@ VAR docSet2 = 1
 { docSet2:
 - 1: -> 2ndInt1
 }
-
+EXTERNAL loadScene(sceneName)
 ==2ndInt1==
 Our second evening in the warehouse was more gruelling than the last. It’s starting to take its toll on me, I think. We get home exhausted. # playerthoughts
 Hunter: Please tell me that’s the last time we’re going in there. # hunter
@@ -64,5 +64,5 @@ I bid Janet and Hunter good night, and they head home. # playerthoughts
     -> warehouseExt3
 ==warehouseExt3==
 After yet another night of restless sleep, and a listless Sunday spent waiting for the evening, it is eventually time for me to head down to the warehouse. I meet Janet and Hunter there and wordlessly- our moods grim- we enter the warehouse for the last time. # playerthoughts
-
+~ loadScene("warehouse3")
     -> END

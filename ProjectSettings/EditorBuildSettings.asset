@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/warehouse2.unity
     guid: 1a5a198e7dd414f4e812eb11a09f991a
+  - enabled: 1
+    path: Assets/Scenes/ink3.unity
+    guid: 5525cdb2db9f8f246b9408db7aacbb5b
+  - enabled: 1
+    path: Assets/Scenes/ink4.unity
+    guid: 2caacb6edf89d0e4eb0ba597f0d99a28
+  - enabled: 1
+    path: Assets/Scenes/warehouse3.unity
+    guid: 18847c8ed69cee54581e6cdd79d75593
   m_configObjects: {}

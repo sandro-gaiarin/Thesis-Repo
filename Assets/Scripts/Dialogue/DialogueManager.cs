@@ -61,6 +61,14 @@ public class DialogueManager : MonoBehaviour
         currentStory.BindExternalFunction("loadScene", (string sceneName) =>
         {
             Debug.Log("Load scene called with " + sceneName);
+            GameObject uiObject = GameObject.Find("UI");
+            if (uiObject != null)
+            {
+                foreach (Transform child in uiObject.transform)
+                {
+                    child.gameObject.SetActive(true);
+                }
+            }
             SceneManager.LoadScene(sceneName);
         });
 

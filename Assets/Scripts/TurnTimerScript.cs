@@ -11,6 +11,7 @@ public class TurnTimerScript : MonoBehaviour
     void Start()
     {
         turnManager = GameObject.Find("TurnManager").GetComponent<TurnManager>();
+        turnTimerText = GameObject.Find("TurnTimerText").GetComponent<TMP_Text>();
     }
 
     // Update is called once per frame

@@ -46,7 +46,7 @@ public class DialogueTrigger : MonoBehaviour
         playerInRange = false;
     }
 
-    private void OnMouseDown()
+    public void OnMouseDown()
     {
         if (!DialogueManager.GetInstance().dialogueIsPlaying)
         {
