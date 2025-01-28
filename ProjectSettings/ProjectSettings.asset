@@ -737,7 +737,10 @@ PlayerSettings:
   webGLMemoryGeometricGrowthStep: 0.2
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Standalone: TMP_PRESENT;USE_NAVMESH;USE_ARTICY
+    WebGL: TMP_PRESENT;USE_NAVMESH;USE_ARTICY
+    Windows Store Apps: TMP_PRESENT;USE_NAVMESH;USE_ARTICY
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
