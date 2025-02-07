@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 935899b62f48ae5498594680ed17d133, type: 3}
-  m_Name: CapstoneGame Act 1
+  m_Name: CapstoneGame Act 1 (Auto-Backup)
   m_EditorClassIdentifier: 
   version: 1/28/2025 3:43:17 AM
   author: articy:draft 4.1.4
@@ -50,7 +50,7 @@ MonoBehaviour:
       type: 0
       typeString: CustomFieldType_Text
     - title: IsPlayer
-      value: True
+      value: False
       type: 2
       typeString: CustomFieldType_Boolean
     - title: Articy Id
@@ -688,11 +688,11 @@ MonoBehaviour:
       - title: Title
         value: 'Player: "Blood Red"'
         type: 0
-        typeString: CustomFieldType_Text
+        typeString: 
       - title: Description
         value: 
         type: 0
-        typeString: CustomFieldType_Text
+        typeString: 
       - title: Actor
         value: 1
         type: 5
@@ -704,27 +704,27 @@ MonoBehaviour:
       - title: Menu Text
         value: 
         type: 0
-        typeString: CustomFieldType_Text
+        typeString: 
       - title: Dialogue Text
         value: Blood Red
         type: 0
-        typeString: CustomFieldType_Text
+        typeString: 
       - title: Sequence
         value: 
         type: 0
-        typeString: CustomFieldType_Text
+        typeString: 
       - title: Articy Id
         value: 0x010000000000014F
         type: 0
-        typeString: CustomFieldType_Text
+        typeString: 
       - title: InputId
         value: 0x0100000000000152
         type: 0
-        typeString: CustomFieldType_Text
+        typeString: 
       - title: OutputId
         value: 0x0100000000000153
         type: 0
-        typeString: CustomFieldType_Text
+        typeString: 
       conversationID: 1
       isRoot: 0
       isGroup: 0
@@ -755,11 +755,11 @@ MonoBehaviour:
       - title: Title
         value: 'Player: "Electric Green"'
         type: 0
-        typeString: CustomFieldType_Text
+        typeString: 
       - title: Description
         value: 
         type: 0
-        typeString: CustomFieldType_Text
+        typeString: 
       - title: Actor
         value: 1
         type: 5
@@ -771,27 +771,27 @@ MonoBehaviour:
       - title: Menu Text
         value: 
         type: 0
-        typeString: CustomFieldType_Text
+        typeString: 
       - title: Dialogue Text
         value: Electric Green
         type: 0
-        typeString: CustomFieldType_Text
+        typeString: 
       - title: Sequence
         value: 
         type: 0
-        typeString: CustomFieldType_Text
+        typeString: 
       - title: Articy Id
         value: 0x0100000000000155
         type: 0
-        typeString: CustomFieldType_Text
+        typeString: 
       - title: InputId
         value: 0x0100000000000158
         type: 0
-        typeString: CustomFieldType_Text
+        typeString: 
       - title: OutputId
         value: 0x0100000000000159
         type: 0
-        typeString: CustomFieldType_Text
+        typeString: 
       conversationID: 1
       isRoot: 0
       isGroup: 0
