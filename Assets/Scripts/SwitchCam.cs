@@ -15,6 +15,11 @@ public class SwitchCam : MonoBehaviour
             CameraManager.SwitchCamera(TurnCamera);
         }
 
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            CameraManager.SwitchCamera(StraightCamera);
+        }
+
         //if (variable that determines if player is in combat)
         // {
         //     CameraManager.SwitchCamera(TopCamera);
