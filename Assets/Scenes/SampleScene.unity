@@ -1797,10 +1797,6 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1911126344}
-    - target: {fileID: 4436233285263653199, guid: a43858bacce7917448de6a84382915dc, type: 3}
-      propertyPath: m_Lens.FieldOfView
-      value: 20.94
-      objectReference: {fileID: 0}
     - target: {fileID: 6705063967366662908, guid: a43858bacce7917448de6a84382915dc, type: 3}
       propertyPath: m_Name
       value: Straight On Camera
@@ -19196,10 +19192,8 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
-  - component: {fileID: 963194230}
   - component: {fileID: 963194231}
   - component: {fileID: 963194233}
-  - component: {fileID: 963194232}
   - component: {fileID: 963194234}
   - component: {fileID: 963194235}
   m_Layer: 0
@@ -19283,22 +19277,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 78.051, y: 0, z: 0}
---- !u!114 &963194230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a3290eb4d1bc754f8d1160bd2d84896, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetObject: {fileID: 1911126344}
-  wallMask:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19314,18 +19292,6 @@ MonoBehaviour:
   StraightCamera: {fileID: 302531907}
   TurnCamera: {fileID: 1292001526}
   TopCamera: {fileID: 1725412115}
---- !u!114 &963194232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afdf375ddcad5a142af4ebd84d90dbc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &963194233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27635,10 +27601,6 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1911126344}
-    - target: {fileID: 4051752335730352090, guid: e39f6430f800a904c9d0cd1471699ff1, type: 3}
-      propertyPath: m_Priority
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7099536732537597432, guid: e39f6430f800a904c9d0cd1471699ff1, type: 3}
       propertyPath: m_Name
       value: Top Down Camera
@@ -44220,7 +44182,7 @@ SceneRoots:
   - {fileID: 1962187804}
   - {fileID: 1148812617}
   - {fileID: 1433397309}
-  - {fileID: 97539241}
   - {fileID: 564078586}
+  - {fileID: 97539241}
   - {fileID: 2024037658}
   - {fileID: 1732398272}

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 871463847507575729}
   - component: {fileID: 4436233285263653199}
+  - component: {fileID: 7564583287844427496}
   m_Layer: 0
   m_Name: Straight On Camera
   m_TagString: Untagged
@@ -54,7 +55,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 20
+    FieldOfView: 20.94
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -72,6 +73,18 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1128756766625504247}
+--- !u!114 &7564583287844427496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6705063967366662908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afdf375ddcad5a142af4ebd84d90dbc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8668609168209811439
 GameObject:
   m_ObjectHideFlags: 0
