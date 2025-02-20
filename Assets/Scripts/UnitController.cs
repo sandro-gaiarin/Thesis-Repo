@@ -63,7 +63,7 @@ public class UnitController : MonoBehaviour
                     unitSelected = true;
 
                     // Directly call SnapToUnit to ensure camera updates immediately after selection
-                    cameraController.GetComponent<CameraScript>().SnapToUnit(selectedUnit);  // Pass selectedUnit directly
+                    //cameraController.GetComponent<CameraScript>().SnapToUnit(selectedUnit);  // Pass selectedUnit directly
 
                     selectedUnitCurrentMovementPoints = selectedUnit.GetComponent<Unit>().currentMovementPoints;
                     Debug.Log("Unit Selected");

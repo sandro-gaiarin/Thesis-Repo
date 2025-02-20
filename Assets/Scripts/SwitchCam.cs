@@ -8,6 +8,7 @@ public class SwitchCam : MonoBehaviour
     public CinemachineVirtualCamera TurnCamera;
     public CinemachineVirtualCamera TopCamera;
 
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -20,9 +21,20 @@ public class SwitchCam : MonoBehaviour
             CameraManager.SwitchCamera(StraightCamera);
         }
 
-        //if (variable that determines if player is in combat)
-        // {
-        //     CameraManager.SwitchCamera(TopCamera);
-        // }
+    }
+
+    void OnEnable()
+    {
+        CombatManager.OnCombatTriggered += SwitchToCombatCam;
+    }
+
+    void OnDisable()
+    {
+        CombatManager.OnCombatTriggered -= SwitchToCombatCam;
+    }
+
+    void SwitchToCombatCam()
+    {
+        CameraManager.SwitchCamera(TopCamera);
     }
 }
