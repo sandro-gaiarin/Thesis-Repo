@@ -232,7 +232,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 38d2a95fc96df2740876253fe6cb2c58, type: 2}
+  - {fileID: 2100000, guid: 9a70b649bbdf42b4eb09693f766d4f12, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 4605368760341757828}
   - component: {fileID: 3717919851393180710}
   m_Layer: 0
-  m_Name: (0, 0)
+  m_Name: hub walkable
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
