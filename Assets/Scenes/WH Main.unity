@@ -32848,6 +32848,7 @@ CanvasRenderer:
   m_GameObject: {fileID: 1304095942}
   m_CullTransparentMesh: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &1307796652
 GameObject:
   m_ObjectHideFlags: 0
@@ -32887,6 +32888,8 @@ Transform:
   - {fileID: 1980719274}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> parent of 1c0ae09 (groupign)
 =======
 >>>>>>> parent of 1c0ae09 (groupign)
 --- !u!1001 &1309003674
@@ -48482,8 +48485,11 @@ Transform:
   - {fileID: 255759121}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 430362174}
 =======
+=======
+>>>>>>> parent of 1c0ae09 (groupign)
 =======
 >>>>>>> parent of 1c0ae09 (groupign)
   - {fileID: 1951071041}
@@ -48505,9 +48511,14 @@ Transform:
   - {fileID: 1953344337}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> parent of cda8e93 (HELP HELP HELP HELP HELP)
 =======
 >>>>>>> parent of cda8e93 (HELP HELP HELP HELP HELP)
+=======
+  - {fileID: 1435712817}
+  - {fileID: 963873487}
+>>>>>>> parent of 1c0ae09 (groupign)
 =======
   - {fileID: 1435712817}
   - {fileID: 963873487}
@@ -51755,12 +51766,15 @@ Transform:
   m_Children:
   - {fileID: 3696588987995375199}
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 2063212449}
   - {fileID: 2045036299}
   - {fileID: 123976111}
   - {fileID: 684988103}
   - {fileID: 118398639}
 =======
+=======
+>>>>>>> parent of 1c0ae09 (groupign)
   - {fileID: 1551226791}
   - {fileID: 9689344}
   - {fileID: 1222404779}
@@ -51808,6 +51822,9 @@ Transform:
   - {fileID: 209671643}
   - {fileID: 411738765}
   - {fileID: 879136499}
+<<<<<<< HEAD
+>>>>>>> parent of 1c0ae09 (groupign)
+=======
 >>>>>>> parent of 1c0ae09 (groupign)
   - {fileID: 8736956835475322840}
   - {fileID: 478669306}
