@@ -11,6 +11,17 @@ TagManager:
   - EnemyUnit
   - Door1
   - Walkable
+  - H1Trigger
+  - H2Trigger
+  - H3Trigger
+  - H4Trigger
+  - Store1Trigger
+  - Store2Trigger
+  - Store3Trigger
+  - R1Trigger
+  - R2Trigger
+  - R3Trigger
+  - WCTrigger
   layers:
   - Default
   - TransparentFX
