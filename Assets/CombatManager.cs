@@ -10,6 +10,6 @@ public class CombatManager : MonoBehaviour
     {
         Debug.Log("Combat Triggered!");
         combatActive = true;
-        OnCombatTriggered?.Invoke(); // Notify all listeners
+        OnCombatTriggered?.Invoke(); 
     }
 }
