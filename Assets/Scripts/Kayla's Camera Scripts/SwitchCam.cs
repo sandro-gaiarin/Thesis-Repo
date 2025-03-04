@@ -38,53 +38,7 @@ public class SwitchCam : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("H1Trigger"))
-        {
-            CameraManager.SwitchCamera(H1Camera);
-        }
-        if (other.CompareTag("H2Trigger"))
-        {
-            CameraManager.SwitchCamera(H2Camera);
-        }
-        if (other.CompareTag("H3Trigger"))
-        {
-            CameraManager.SwitchCamera(H3Camera);
-        }
-        if (other.CompareTag("H4Trigger"))
-        {
-            CameraManager.SwitchCamera(H4Camera);
-        }
-        if (other.CompareTag("Store1Trigger"))
-        {
-            CameraManager.SwitchCamera(Store1Camera);
-        }
-        if (other.CompareTag("Store2Trigger"))
-        {
-            CameraManager.SwitchCamera(Store2Camera);
-        }
-        if (other.CompareTag("Store3Trigger"))
-        {
-            CameraManager.SwitchCamera(Store3Camera);
-        }
-        if (other.CompareTag("R1Trigger"))
-        {
-            CameraManager.SwitchCamera(R1Camera);
-        }
-        if (other.CompareTag("R2Trigger"))
-        {
-            CameraManager.SwitchCamera(R2Camera);
-        }
-        if (other.CompareTag("R3Trigger"))
-        {
-            CameraManager.SwitchCamera(R3Camera);
-        }
-        if (other.CompareTag("WC"))
-        {
-            CameraManager.SwitchCamera(WCCamera);
-        }
-    }
+
 
     void OnEnable()
     {
