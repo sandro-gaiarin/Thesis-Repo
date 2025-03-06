@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public List<NewInventoryItem> items = new List<NewInventoryItem>();
+    [SerializeField] public List<NewInventoryItem> items = new List<NewInventoryItem>();
     public InventoryUI inventoryUI; // Reference to the UI
 
     public void ToggleInventory()
@@ -13,6 +13,7 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(ItemData itemData, int amount)
     {
+        Debug.Log($"Adding {amount} {itemData.itemName} to inventory");
         NewInventoryItem existingItem = items.Find(i => i.itemData == itemData);
 
         if (existingItem != null)
