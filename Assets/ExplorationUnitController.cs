@@ -37,7 +37,7 @@ public class ExplorationUnitController : MonoBehaviour
                 //cameraController.GetComponent<CameraScript>().SnapToUnit(selectedUnit);  // Pass selectedUnit directly
 
                 //selectedUnitCurrentMovementPoints = selectedUnit.GetComponent<Unit>().currentMovementPoints;
-                Debug.Log("Unit Selected");
+                //Debug.Log("Unit Selected");
 
                 //HighlightReachableTiles(); // Highlight reachable tiles
                 return;

@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class DoorTileScript : MonoBehaviour
 {
@@ -61,3 +61,4 @@ public class DoorTileScript : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, detectionDistance);
     }
 }
+*/

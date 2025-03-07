@@ -1,6 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class UnitController : MonoBehaviour
 {
@@ -25,173 +25,143 @@ public class UnitController : MonoBehaviour
     {
         gridManager = FindObjectOfType<GridManager>();
         cameraController = GameObject.Find("Main Camera");
-        inventoryManager = GameObject.Find("InventoryManager").GetComponent<InventoryManager>();
+        inventoryManager = GameObject.Find("InventoryManager")?.GetComponent<InventoryManager>();
+
+        if (gridManager == null) Debug.LogError("GridManager not found!");
+        if (cameraController == null) Debug.LogError("Main Camera not found!");
+        if (inventoryManager == null) Debug.LogError("InventoryManager not found!");
     }
 
     void Update()
     {
         HandleMouseInput();
-        //HandleKeyboardInput();
     }
+
     void HandleMouseInput()
     {
-
-          if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
             {
-            if (UnityEngine.EventSystems.EventSystem.current != null &&
-                UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
-             {
                 Debug.Log("Clicked on UI, ignoring.");
                 return;
-             }
+            }
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            RaycastHit[] hits = Physics.RaycastAll(ray, Mathf.Infinity); // Detect all objects
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, tileLayerMask))
+            GameObject hitUnit = null;
+            GameObject hitTile = null;
+
+            foreach (RaycastHit hit in hits)
             {
                 Debug.Log($"Hit: {hit.transform.name}, Tag: {hit.transform.tag}");
 
-                if (!isAttacking && hit.transform.CompareTag("PlayerUnit"))
+                if (hit.transform.CompareTag("PlayerUnit") && hitUnit == null)
                 {
-                    ClearHighlightedTiles(); // Clear old highlights
+                    hitUnit = hit.transform.gameObject;
+                }
+                else if (hit.transform.CompareTag("Tile") && hitTile == null)
+                {
+                    hitTile = hit.transform.gameObject;
+                }
+            }
 
-                    selectedUnit = hit.transform.gameObject;
-                    unitSelected = true;
+            // **Prioritize Unit Selection**
+            if (hitUnit != null)
+            {
+                Debug.Log($"Selected Unit: {hitUnit.name}");
+                ClearHighlightedTiles();
 
-                    // Directly call SnapToUnit to ensure camera updates immediately after selection
-                    //cameraController.GetComponent<CameraScript>().SnapToUnit(selectedUnit);  // Pass selectedUnit directly
+                selectedUnit = hitUnit;
+                unitSelected = true;
+                selectedUnitCurrentMovementPoints = selectedUnit.GetComponent<Unit>().currentMovementPoints;
 
-                    selectedUnitCurrentMovementPoints = selectedUnit.GetComponent<Unit>().currentMovementPoints;
-                    Debug.Log("Unit Selected");
+                if (selectedUnit.GetComponent<Unit>() == null)
+                {
+                    Debug.LogError("Selected unit has no Unit component!");
+                }
+                else
+                {
+                    Debug.Log($"Unit Selected: {selectedUnit.name}, Movement Points: {selectedUnitCurrentMovementPoints}");
+                }
 
-                    HighlightReachableTiles(); // Highlight reachable tiles
+                HighlightReachableTiles();
+                return;
+            }
+
+            // **Handle Tile Clicks if No Unit Was Clicked**
+            if (hitTile != null && unitSelected && selectedUnit != null && selectedUnitCurrentMovementPoints > 0)
+            {
+                Debug.Log($"Attempting to move {selectedUnit.name} to tile {hitTile.name}");
+
+                Labeller tileLabeller = hitTile.GetComponent<Labeller>();
+                if (tileLabeller == null)
+                {
+                    Debug.LogError("Tile has no Labeller component!");
                     return;
                 }
 
-                if (unitSelected && selectedUnit != null && selectedUnitCurrentMovementPoints > 0 && hit.transform.CompareTag("Tile"))
+                Vector2Int targetCords = tileLabeller.cords;
+                Vector2Int startCords = new Vector2Int(
+                    Mathf.RoundToInt(selectedUnit.transform.position.x / gridManager.UnityGridSize),
+                    Mathf.RoundToInt(selectedUnit.transform.position.z / gridManager.UnityGridSize)
+                );
+
+                int manhattanDistance = Mathf.Abs(targetCords.x - startCords.x) + Mathf.Abs(targetCords.y - startCords.y);
+                Debug.Log($"Manhattan Distance: {manhattanDistance}, Movement Points Available: {selectedUnitCurrentMovementPoints}");
+
+                if (highlightedTiles.Contains(hitTile))
                 {
-                    Labeller tileLabeller = hit.transform.GetComponent<Labeller>();
-                    if (tileLabeller == null) return;
-
-                    Vector2Int targetCords = tileLabeller.cords;
-                    Vector2Int startCords = new Vector2Int(
-                        Mathf.RoundToInt(selectedUnit.transform.position.x / gridManager.UnityGridSize),
-                        Mathf.RoundToInt(selectedUnit.transform.position.z / gridManager.UnityGridSize)
-                    );
-
-                    int manhattanDistance = Mathf.Abs(targetCords.x - startCords.x) + Mathf.Abs(targetCords.y - startCords.y);
-
-                    if (highlightedTiles.Contains(hit.transform.gameObject))
+                    ClearHighlightedTiles();
+                    if (manhattanDistance <= selectedUnitCurrentMovementPoints)
                     {
-                        ClearHighlightedTiles();
-                        if (manhattanDistance <= selectedUnitCurrentMovementPoints)
-                        {
-                            selectedUnit.transform.position = new Vector3(
-                                targetCords.x * gridManager.UnityGridSize,
-                                selectedUnit.transform.position.y,
-                                targetCords.y * gridManager.UnityGridSize
-                            );
+                        selectedUnit.transform.position = new Vector3(
+                            targetCords.x * gridManager.UnityGridSize,
+                            selectedUnit.transform.position.y,
+                            targetCords.y * gridManager.UnityGridSize
+                        );
 
-                            Debug.Log("Unit Moved");
+                        Debug.Log($"{selectedUnit.name} moved to {targetCords}");
 
-                            selectedUnit.GetComponent<Unit>().MoveUnit(targetCords);
-                            selectedUnitCurrentMovementPoints -= manhattanDistance;
-                            selectedUnit.GetComponent<Unit>().currentMovementPoints = selectedUnitCurrentMovementPoints;
+                        selectedUnit.GetComponent<Unit>().MoveUnit(targetCords);
+                        selectedUnitCurrentMovementPoints -= manhattanDistance;
+                        selectedUnit.GetComponent<Unit>().currentMovementPoints = selectedUnitCurrentMovementPoints;
 
-                            Debug.Log($"Remaining movement points: {selectedUnitCurrentMovementPoints}");
-                            HighlightReachableTiles();
-                        }
-                        else
-                        {
-                            Debug.Log("Target out of movement range!");
-                        }
+                        Debug.Log($"Remaining movement points: {selectedUnitCurrentMovementPoints}");
+                        HighlightReachableTiles();
                     }
-                }
-
-                if (isAttacking && (hit.transform.CompareTag("PlayerUnit") || hit.transform.CompareTag("EnemyUnit")))
-                {
-                    selectedUnit?.GetComponent<Unit>().Attack(hit.transform.GetComponent<Unit>());
-                    isAttacking = false;
+                    else
+                    {
+                        Debug.Log("Target out of movement range!");
+                    }
                 }
             }
         }
-    
-        
     }
 
-
-
-
-
-    public void EnterAttackMode() { 
-     if (selectedUnit.GetComponent<Unit>().numberOfActions > 0)
-                    {
-                        isAttacking = true;
-                        Debug.Log("Attack Mode");
-                    }
-                    else
-                        {
-                            Debug.Log("Out of Actions");
-                        }
-    }
-
-    /*void HandleKeyboardInput()
+    public void EnterAttackMode()
+    {
+        if (selectedUnit != null && selectedUnit.GetComponent<Unit>().numberOfActions > 0)
         {
-            if (selectedUnit != null)
-            {
-                if (unitSelected)
-                {
-                    if (Input.GetKeyDown(KeyCode.F))
-                    {
-                        if (selectedUnit.GetComponent<Unit>().numberOfActions > 0)
-                        {
-                            isAttacking = true;
-                            Debug.Log("Attack Mode");
-                        }
-                        else
-                        {
-                            Debug.Log("Out of Actions");
-                        }
-                    }
-
-                    bool moved = false;
-                    Vector2Int targetGridPosition = new Vector2Int(
-                        Mathf.RoundToInt(selectedUnit.transform.position.x / gridManager.UnityGridSize),
-                        Mathf.RoundToInt(selectedUnit.transform.position.z / gridManager.UnityGridSize)
-                    );
-
-                    selectedUnitCurrentMovementPoints = selectedUnit.GetComponent<Unit>().currentMovementPoints;
-                    if (selectedUnitCurrentMovementPoints <= 0) return;
-
-                    if (Input.GetKeyDown(KeyCode.W)) { targetGridPosition += new Vector2Int(0, 1); moved = true; }
-                    else if (Input.GetKeyDown(KeyCode.S)) { targetGridPosition += new Vector2Int(0, -1); moved = true; }
-                    else if (Input.GetKeyDown(KeyCode.A)) { targetGridPosition += new Vector2Int(-1, 0); moved = true; }
-                    else if (Input.GetKeyDown(KeyCode.D)) { targetGridPosition += new Vector2Int(1, 0); moved = true; }
-
-                    if (moved)
-                    {
-                        GameObject targetTile = gridManager.GetTileGameObjectAtPosition(targetGridPosition);
-                        if (targetTile != null && !targetTile.CompareTag("Unwalkable"))
-                        {
-                            selectedUnit.transform.position = new Vector3(
-                                targetGridPosition.x * gridManager.UnityGridSize,
-                                selectedUnit.transform.position.y,
-                                targetGridPosition.y * gridManager.UnityGridSize
-                            );
-                            selectedUnit.GetComponent<Unit>().currentMovementPoints--;
-                            Debug.Log($"Unit moved to: {targetGridPosition}, Remaining movement points: {selectedUnit.GetComponent<Unit>().currentMovementPoints}");
-                        }
-                    }
-                }
-            }
-        }*/
+            isAttacking = true;
+            Debug.Log("Attack Mode");
+        }
+        else
+        {
+            Debug.Log("Out of Actions");
+        }
+    }
 
     void HighlightReachableTiles()
     {
-        if (selectedUnit == null) return; // Prevent null reference on camera movement
+        if (selectedUnit == null)
+        {
+            Debug.LogError("No selected unit to highlight movement tiles!");
+            return;
+        }
 
-        ClearHighlightedTiles(); // Clear old highlights
+        ClearHighlightedTiles();
 
         Vector2Int startCords = new Vector2Int(
             Mathf.RoundToInt(selectedUnit.transform.position.x / gridManager.UnityGridSize),
@@ -223,7 +193,8 @@ public class UnitController : MonoBehaviour
                             frontier.Enqueue(neighbor);
                             distances[neighbor] = currentDistance + 1;
 
-                            // Highlight the tile
+                            Debug.Log($"Highlighting tile at {neighbor}");
+
                             MeshRenderer renderer = tile.GetComponentInChildren<MeshRenderer>();
                             if (renderer != null)
                             {
@@ -235,8 +206,9 @@ public class UnitController : MonoBehaviour
                 }
             }
         }
-    }
 
+        Debug.Log($"Total highlighted tiles: {highlightedTiles.Count}");
+    }
 
     void ClearHighlightedTiles()
     {

@@ -22,6 +22,8 @@ public class Inventory : MonoBehaviour
         }
     }
 
+
+
     public void ToggleInventory()
     {
         gameObject.SetActive(!gameObject.activeSelf);

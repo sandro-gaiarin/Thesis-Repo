@@ -1,65 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.EventSystems;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemSlot : MonoBehaviour, IPointerClickHandler
+public class ItemSlot : MonoBehaviour
 {
-    // ITEM DATA
+    public TMP_Text itemNameText;
+    public TMP_Text itemQuantityText;
+    public Image itemIcon;
 
-    public string itemName;
-    public int quantity;
-    public string description;
-    public bool isFull;
-    public bool isSelected;
+    private bool isFull = false; // Tracks if the slot is occupied
 
-    private InventoryManager inventoryManager;
-
-    private void Start()
+    public void SetItem(string itemName, int quantity, string description)
     {
-        inventoryManager = GameObject.Find("Inventory Manager").GetComponent<InventoryManager>();
-        if (inventoryManager == null)
-        {
-            Debug.LogError("InventoryManager not found.");
-            return;
-        }
-    }
-    
-    [SerializeField] private TMP_Text itemNameText;
-    public TMP_Text ItemDescriptionText;
-   
-        public void AddItem(string itemName,int quantity, string itemDescription)
-    {
-        this.itemName = itemName;
-        this.quantity = quantity;
-        this.description = itemDescription;
+        itemNameText.text = itemName;
+        itemQuantityText.text = "x" + quantity;
         isFull = true;
 
-        itemNameText.text = itemName.ToString();
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (eventData.button == PointerEventData.InputButton.Left)
+        // Load the item's sprite dynamically
+        ItemData itemData = Resources.Load<ItemData>($"Items/{itemName}");
+        if (itemData != null)
         {
-            OnLeftClick();
+            itemIcon.sprite = itemData.icon;
         }
-        else if (eventData.button == PointerEventData.InputButton.Right)
+        else
         {
-            //OnRightClick();
+            Debug.LogError($"Icon not found for item: {itemName}");
         }
     }
-    
-    public void OnLeftClick()
-    {
-        isSelected = true;
-        ItemDescriptionText.text = description;
-        Debug.Log("Left Clicked");
-    }
-
-   
-
-
 }
+
