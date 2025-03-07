@@ -148,6 +148,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.020000001, y: 0.039999995, z: 0.019999998}
   m_Center: {x: 0, y: -0.01, z: 4.6566126e-10}
+--- !u!64 &4629618
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4629612}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1301364272739243547, guid: 72a13863b04923b40b7b65e615aa6e5e, type: 3}
 --- !u!1001 &43552099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4428,6 +4450,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -61373157383792194, guid: 72a13863b04923b40b7b65e615aa6e5e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4629616}
+    - targetCorrespondingSourceObject: {fileID: -61373157383792194, guid: 72a13863b04923b40b7b65e615aa6e5e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4629618}
   m_SourcePrefab: {fileID: 100100000, guid: 72a13863b04923b40b7b65e615aa6e5e, type: 3}
 --- !u!1001 &1919257788
 PrefabInstance:
@@ -4505,6 +4530,10 @@ PrefabInstance:
     - target: {fileID: 2067921227713102290, guid: 0732c72249f03584ba24461491831730, type: 3}
       propertyPath: m_Name
       value: Hacker
+      objectReference: {fileID: 0}
+    - target: {fileID: 2659852725049114219, guid: 0732c72249f03584ba24461491831730, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3486561686797239993, guid: 0732c72249f03584ba24461491831730, type: 3}
       propertyPath: m_LocalPosition.x
