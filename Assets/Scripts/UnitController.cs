@@ -25,7 +25,7 @@ public class UnitController : MonoBehaviour
     {
         gridManager = FindObjectOfType<GridManager>();
         cameraController = GameObject.Find("Main Camera");
-        inventoryManager = GameObject.Find("Inventory Manager").GetComponent<InventoryManager>();
+        inventoryManager = GameObject.Find("InventoryManager").GetComponent<InventoryManager>();
     }
 
     void Update()
@@ -36,9 +36,6 @@ public class UnitController : MonoBehaviour
     void HandleMouseInput()
     {
 
-        if (inventoryManager.menuActivated == false)
-       { 
-         
           if (Input.GetMouseButtonDown(0))
             {
             if (UnityEngine.EventSystems.EventSystem.current != null &&
@@ -120,7 +117,7 @@ public class UnitController : MonoBehaviour
             }
         }
     
-        }
+        
     }
 
 

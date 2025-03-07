@@ -2,8 +2,12 @@ using UnityEngine;
 
 public class InventoryTest : MonoBehaviour
 {
+
     public Inventory inventory;
     public ItemData testItem; // Assign an ItemData in the Inspector
+
+
+   
 
     void Update()
     {

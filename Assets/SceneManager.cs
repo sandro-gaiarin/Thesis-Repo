@@ -1,15 +1,17 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Required for scene management
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System.Collections;
 using PixelCrushers.DialogueSystem;
 
 public class SceneManager : MonoBehaviour
 {
-    // Singleton instance to ensure only one SceneManager exists
     public static SceneManager Instance;
+    public Image fadeImage; // Assign this in the Inspector
+    public float fadeDuration = 1f; // Duration of the fade
 
     void Awake()
     {
-        // Ensure only one instance of SceneManager exists
         if (Instance == null)
         {
             Instance = this;
@@ -17,59 +19,49 @@ public class SceneManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject); // Destroy duplicate instances
+            Destroy(gameObject);
         }
     }
 
-    void OnEnable()
+    // Method to fade to black and load a scene
+    public void FadeAndLoadScene(string sceneName)
     {
-        // Make the functions available to Lua: (Replace these lines with your own.)
-        Lua.RegisterFunction("LoadScene", this, SymbolExtensions.GetMethodInfo(() => LoadScene(string.Empty)));
-        //Lua.RegisterFunction(nameof(AddOne), this, SymbolExtensions.GetMethodInfo(() => AddOne((double)0)));
+        StartCoroutine(FadeOutAndLoad(sceneName));
     }
 
-
-
-    // Method to load a scene
-    public static void LoadScene(string sceneName)
+    IEnumerator FadeOutAndLoad(string sceneName)
     {
-        Debug.Log("Loading scene: " + sceneName);
+        yield return StartCoroutine(Fade(1)); // Fade to black
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        yield return StartCoroutine(Fade(0)); // Fade back in
     }
 
-    public void LoadSceneFromLua()
+    IEnumerator Fade(float targetAlpha)
     {
-        string sceneName = DialogueLua.GetVariable("NextScene").AsString; // Get scene from Lua
+        float startAlpha = fadeImage.color.a;
+        float timeElapsed = 0f;
+
+        while (timeElapsed < fadeDuration)
+        {
+            float alpha = Mathf.Lerp(startAlpha, targetAlpha, timeElapsed / fadeDuration);
+            fadeImage.color = new Color(0f, 0f, 0f, alpha);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        fadeImage.color = new Color(0f, 0f, 0f, targetAlpha);
+    }
+
+    public void FadeSceneFromLua()
+    {
+        string sceneName = DialogueLua.GetVariable("NextScene").AsString;
         if (!string.IsNullOrEmpty(sceneName))
         {
-            Debug.Log("Loading scene: " + sceneName);
-            SceneManager.LoadScene(sceneName);
+            FadeAndLoadScene(sceneName);
         }
         else
         {
             Debug.LogWarning("Scene name is empty or invalid!");
-        }
-    }
-
-    // Method to reload the current scene
-    public void ReloadCurrentScene()
-    {
-        string currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-        Debug.Log("Reloading scene: " + currentScene);
-        UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene);
-    }
-
-    // Method to load the next scene (based on build index)
-    public void LoadNextScene()
-    {
-        int nextSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1;
-        if (nextSceneIndex < UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings)
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(nextSceneIndex);
-        }
-        else
-        {
-            Debug.LogWarning("No more scenes to load.");
         }
     }
 }

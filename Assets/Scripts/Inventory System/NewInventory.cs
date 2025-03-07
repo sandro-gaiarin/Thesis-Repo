@@ -3,8 +3,24 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    public static Inventory Instance { get; private set; }
     [SerializeField] public List<NewInventoryItem> items = new List<NewInventoryItem>();
     public InventoryUI inventoryUI; // Reference to the UI
+
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Persist across scenes
+        }
+        else
+        {
+            Destroy(gameObject); // Destroy duplicates
+            return;
+        }
+    }
 
     public void ToggleInventory()
     {

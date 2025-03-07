@@ -4,20 +4,72 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
-    public Inventory inventory;      // Reference to the Inventory script
+    public static InventoryUI Instance;
+    public Inventory inventory;      // Reference to the Inventory script (assigned via code)
     public GameObject slotPrefab;    // Prefab for the inventory slot
     public Transform itemContainer;  // Parent object holding slots
+    public GameObject inventoryCanvas; // Assign the inventory Canvas in Inspector
 
     private List<GameObject> slots = new List<GameObject>();
 
-    void Start()
+    void Awake()
     {
-        RefreshUI(); // Populate the inventory on start
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Persist across scenes
+        }
+        else
+        {
+            Destroy(gameObject); // Destroy duplicates
+            return;
+        }
     }
 
-    // Refresh the inventory UI
+    void Start()
+    {
+        // Automatically find InventoryManager and get its Inventory component
+        GameObject inventoryManager = GameObject.Find("InventoryManager");
+        if (inventoryManager != null)
+        {
+            inventory = inventoryManager.GetComponent<Inventory>();
+        }
+        else
+        {
+            Debug.LogError("InventoryManager not found in the scene!");
+        }
+
+        inventoryCanvas.SetActive(false); // Ensure it's off at start
+        RefreshUI(); // Populate the inventory UI initially
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I)) // Check if 'I' is pressed
+        {
+            ToggleInventory();
+        }
+    }
+
+    public void ToggleInventory()
+    {
+        bool isActive = inventoryCanvas.activeSelf;
+        inventoryCanvas.SetActive(!isActive);
+
+        if (!isActive)
+        {
+            RefreshUI();
+        }
+    }
+
     public void RefreshUI()
     {
+        if (inventory == null)
+        {
+            Debug.LogError("Inventory reference is missing!");
+            return;
+        }
+
         // Clear existing slots
         foreach (GameObject slot in slots)
         {
@@ -41,7 +93,6 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    // Example method for using an item
     void UseItem(NewInventoryItem item)
     {
         Debug.Log($"Used {item.itemData.itemName}");
