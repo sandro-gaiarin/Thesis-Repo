@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement; // Required for scene management
+using PixelCrushers.DialogueSystem;
 
 public class SceneManager : MonoBehaviour
 {
@@ -20,11 +21,34 @@ public class SceneManager : MonoBehaviour
         }
     }
 
+    void OnEnable()
+    {
+        // Make the functions available to Lua: (Replace these lines with your own.)
+        Lua.RegisterFunction("LoadScene", this, SymbolExtensions.GetMethodInfo(() => LoadScene(string.Empty)));
+        //Lua.RegisterFunction(nameof(AddOne), this, SymbolExtensions.GetMethodInfo(() => AddOne((double)0)));
+    }
+
+
+
     // Method to load a scene
-    public void LoadScene(string sceneName)
+    public static void LoadScene(string sceneName)
     {
         Debug.Log("Loading scene: " + sceneName);
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+    }
+
+    public void LoadSceneFromLua()
+    {
+        string sceneName = DialogueLua.GetVariable("NextScene").AsString; // Get scene from Lua
+        if (!string.IsNullOrEmpty(sceneName))
+        {
+            Debug.Log("Loading scene: " + sceneName);
+            SceneManager.LoadScene(sceneName);
+        }
+        else
+        {
+            Debug.LogWarning("Scene name is empty or invalid!");
+        }
     }
 
     // Method to reload the current scene

@@ -738,9 +738,9 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: TMP_PRESENT
-    Standalone: USE_NAVMESH;USE_ARTICY;TMP_PRESENT
-    WebGL: TMP_PRESENT;USE_NAVMESH;USE_ARTICY
+    Android: TMP_PRESENT;USE_CINEMACHINE
+    Standalone: USE_NAVMESH;USE_ARTICY;TMP_PRESENT;USE_CINEMACHINE
+    WebGL: TMP_PRESENT;USE_NAVMESH;USE_ARTICY;USE_CINEMACHINE
     Windows Store Apps: USE_NAVMESH;USE_ARTICY;TMP_PRESENT
   additionalCompilerArguments: {}
   platformArchitecture: {}
