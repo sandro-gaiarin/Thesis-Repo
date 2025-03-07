@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
-<Export xmlns="http://www.articy.com/schemas/articydraft/4.0/XmlContentExport_FullProject.xsd" Version="3.1" CreatorTool="articy:draft" CreatorVersion="4.1.4" CreatedOn="2025-01-28T03:43:17Z">
+<Export xmlns="http://www.articy.com/schemas/articydraft/4.0/XmlContentExport_FullProject.xsd" Version="3.1" CreatorTool="articy:draft" CreatorVersion="4.1.4" CreatedOn="2025-03-07T00:03:20Z">
   <Settings>
     <ExportMarkup>1</ExportMarkup>
     <ExportQueries>1</ExportQueries>
@@ -274,6 +274,42 @@
       <DisplayName>Scripts</DisplayName>
       <Color>#C8E2E7</Color>
     </TypedPropertyTemplates>
+    <Asset Id="0x0100000000000DF3">
+      <DisplayName Count="1">
+        <Remarks/>
+        <LocalizedString Lang="" TextState="InProgress">Janet</LocalizedString>
+      </DisplayName>
+      <Color>#C8E2E7</Color>
+      <TechnicalName>Ast_774F8105</TechnicalName>
+      <ExternalId/>
+      <ShortId>0x774F8105</ShortId>
+      <Url>articy://localhost/view/61d2af20-2ec1-435c-8178-55b98c14ca88/72057594037931507</Url>
+      <Features Count="0"/>
+      <PreviewImage IdRef="0x0100000000000DF3" Mode="Auto">
+        <ViewBox MinX="0" MinY="0" MaxX="0" MaxY="0"/>
+      </PreviewImage>
+      <AssetFilename>Janet(0CF3).png</AssetFilename>
+      <AssetPath>Assets\Partition(c0275325-35d0-4510-9656-be40afea95d9)\</AssetPath>
+      <OriginalSource>file:///C:/Users/anth/OneDrive/Desktop/Janet.png</OriginalSource>
+    </Asset>
+    <Asset Id="0x0100000000000DF6">
+      <DisplayName Count="1">
+        <Remarks/>
+        <LocalizedString Lang="" TextState="InProgress">Hunter</LocalizedString>
+      </DisplayName>
+      <Color>#C8E2E7</Color>
+      <TechnicalName>Ast_F0229274</TechnicalName>
+      <ExternalId/>
+      <ShortId>0xF0229274</ShortId>
+      <Url>articy://localhost/view/61d2af20-2ec1-435c-8178-55b98c14ca88/72057594037931510</Url>
+      <Features Count="0"/>
+      <PreviewImage IdRef="0x0100000000000DF6" Mode="Auto">
+        <ViewBox MinX="0" MinY="0" MaxX="0" MaxY="0"/>
+      </PreviewImage>
+      <AssetFilename>Hunter(0CF6).png</AssetFilename>
+      <AssetPath>Assets\Partition(c0275325-35d0-4510-9656-be40afea95d9)\</AssetPath>
+      <OriginalSource>file:///C:/Users/anth/OneDrive/Desktop/Hunter.png</OriginalSource>
+    </Asset>
     <Condition Id="0x0100000000000392">
       <DisplayName><![CDATA[Act1Variables.flagMuscle>=Act1Variab ...]]></DisplayName>
       <Color>#C8E2E7</Color>
@@ -3829,6 +3865,60 @@
       <Target IdRef="0x0100000000000A8C" PinRef="0x0100000000000A8F"/>
       <ShowLabel>0</ShowLabel>
     </Connection>
+    <Connection Id="0x0100000000000D72">
+      <Color>#C8E2E7</Color>
+      <TechnicalName>Con_F0F291F0</TechnicalName>
+      <Url>articy://localhost/view/61d2af20-2ec1-435c-8178-55b98c14ca88/72057594037931378</Url>
+      <Label/>
+      <Source IdRef="0x0100000000000D61" PinRef="0x0100000000000D65"/>
+      <Target IdRef="0x0100000000000D6D" PinRef="0x0100000000000D70"/>
+      <ShowLabel>0</ShowLabel>
+    </Connection>
+    <Connection Id="0x0100000000000D80">
+      <Color>#C8E2E7</Color>
+      <TechnicalName>Con_786829D7</TechnicalName>
+      <Url>articy://localhost/view/61d2af20-2ec1-435c-8178-55b98c14ca88/72057594037931392</Url>
+      <Label/>
+      <Source IdRef="0x0100000000000D6D" PinRef="0x0100000000000D71"/>
+      <Target IdRef="0x0100000000000D7B" PinRef="0x0100000000000D7E"/>
+      <ShowLabel>0</ShowLabel>
+    </Connection>
+    <Connection Id="0x0100000000000D87">
+      <Color>#C8E2E7</Color>
+      <TechnicalName>Con_51164455</TechnicalName>
+      <Url>articy://localhost/view/61d2af20-2ec1-435c-8178-55b98c14ca88/72057594037931399</Url>
+      <Label/>
+      <Source IdRef="0x0100000000000D7B" PinRef="0x0100000000000D7F"/>
+      <Target IdRef="0x0100000000000D82" PinRef="0x0100000000000D85"/>
+      <ShowLabel>0</ShowLabel>
+    </Connection>
+    <Connection Id="0x0100000000000D94">
+      <Color>#C8E2E7</Color>
+      <TechnicalName>Con_D38576CD</TechnicalName>
+      <Url>articy://localhost/view/61d2af20-2ec1-435c-8178-55b98c14ca88/72057594037931412</Url>
+      <Label/>
+      <Source IdRef="0x0100000000000D89" PinRef="0x0100000000000D8D"/>
+      <Target IdRef="0x0100000000000D8F" PinRef="0x0100000000000D92"/>
+      <ShowLabel>0</ShowLabel>
+    </Connection>
+    <Connection Id="0x0100000000000D9B">
+      <Color>#C8E2E7</Color>
+      <TechnicalName>Con_F5FE5B91</TechnicalName>
+      <Url>articy://localhost/view/61d2af20-2ec1-435c-8178-55b98c14ca88/72057594037931419</Url>
+      <Label/>
+      <Source IdRef="0x0100000000000D8F" PinRef="0x0100000000000D93"/>
+      <Target IdRef="0x0100000000000D96" PinRef="0x0100000000000D99"/>
+      <ShowLabel>0</ShowLabel>
+    </Connection>
+    <Connection Id="0x0100000000000DA2">
+      <Color>#C8E2E7</Color>
+      <TechnicalName>Con_60DC9213</TechnicalName>
+      <Url>articy://localhost/view/61d2af20-2ec1-435c-8178-55b98c14ca88/72057594037931426</Url>
+      <Label/>
+      <Source IdRef="0x0100000000000D96" PinRef="0x0100000000000D9A"/>
+      <Target IdRef="0x0100000000000D9D" PinRef="0x0100000000000DA0"/>
+      <ShowLabel>0</ShowLabel>
+    </Connection>
     <Dialogue Id="0x0100000000000130">
       <DisplayName Count="1">
         <Remarks/>
@@ -4128,6 +4218,54 @@
       <Position X="3942" Y="-225"/>
       <Size Width="291" Height="200"/>
       <ZIndex>19</ZIndex>
+    </Dialogue>
+    <Dialogue Id="0x0100000000000D4D">
+      <DisplayName Count="1">
+        <Remarks/>
+        <LocalizedString Lang="" TextState="Outdated">Exploration Tool Tips</LocalizedString>
+      </DisplayName>
+      <Color>#C8E2E7</Color>
+      <TechnicalName>Dlg_8C02DD9A</TechnicalName>
+      <ExternalId/>
+      <ShortId>0x8C02DD9A</ShortId>
+      <Url>articy://localhost/view/61d2af20-2ec1-435c-8178-55b98c14ca88/72057594037931341</Url>
+      <Features Count="0"/>
+      <References Count="0"/>
+      <Pins Count="2">
+        <Pin Id="0x0100000000000D50" Index="0" Semantic="Input">
+          <Expression/>
+        </Pin>
+        <Pin Id="0x0100000000000D51" Index="0" Semantic="Output">
+          <Expression/>
+        </Pin>
+      </Pins>
+      <Position X="-633" Y="325"/>
+      <Size Width="291" Height="200"/>
+      <ZIndex>21</ZIndex>
+    </Dialogue>
+    <Dialogue Id="0x0100000000000D66">
+      <DisplayName Count="1">
+        <Remarks/>
+        <LocalizedString Lang="" TextState="Outdated">Basic Combat Tool Tips</LocalizedString>
+      </DisplayName>
+      <Color>#C8E2E7</Color>
+      <TechnicalName>Dlg_663282BE</TechnicalName>
+      <ExternalId/>
+      <ShortId>0x663282BE</ShortId>
+      <Url>articy://localhost/view/61d2af20-2ec1-435c-8178-55b98c14ca88/72057594037931366</Url>
+      <Features Count="0"/>
+      <References Count="0"/>
+      <Pins Count="2">
+        <Pin Id="0x0100000000000D69" Index="0" Semantic="Input">
+          <Expression/>
+        </Pin>
+        <Pin Id="0x0100000000000D6A" Index="0" Semantic="Output">
+          <Expression/>
+        </Pin>
+      </Pins>
+      <Position X="-33" Y="400"/>
+      <Size Width="291" Height="200"/>
+      <ZIndex>22</ZIndex>
     </Dialogue>
     <DialogueFragment Id="0x010000000000013D">
       <DisplayName><![CDATA[SPLASHWAVE QUIZ: "What is your favorite color?"]]></DisplayName>
@@ -12571,6 +12709,222 @@ Okay, I understand [Act1Variables.player]. I’m with you, at least for a little
       <StageDirections/>
       <MenuText/>
     </DialogueFragment>
+    <DialogueFragment Id="0x0100000000000D61">
+      <DisplayName><![CDATA[Tool Tips: "Oh no! Breaking in has triggered an..."]]></DisplayName>
+      <Text Count="1" HasMarkup="1">
+        <Remarks/>
+        <LocalizedString Lang="" TextState="InProgress">Oh no! Breaking in has triggered an alarm.</LocalizedString>
+      </Text>
+      <Color>#C8E2E7</Color>
+      <TechnicalName>DFr_AE489D09</TechnicalName>
+      <ExternalId/>
+      <ShortId>0xAE489D09</ShortId>
+      <Url>articy://localhost/view/61d2af20-2ec1-435c-8178-55b98c14ca88/72057594037931361</Url>
+      <Features Count="0"/>
+      <Pins Count="2">
+        <Pin Id="0x0100000000000D64" Index="0" Semantic="Input">
+          <Expression/>
+        </Pin>
+        <Pin Id="0x0100000000000D65" Index="0" Semantic="Output">
+          <Expression/>
+        </Pin>
+      </Pins>
+      <Position X="250" Y="275"/>
+      <Size Width="225" Height="200"/>
+      <ZIndex>0</ZIndex>
+      <Speaker IdRef="0x0100000000000D5D"/>
+      <StageDirections/>
+      <MenuText/>
+    </DialogueFragment>
+    <DialogueFragment Id="0x0100000000000D6D">
+      <DisplayName><![CDATA[Tool Tips: "You can't leave empty-handed though..."]]></DisplayName>
+      <Text Count="1" HasMarkup="1">
+        <Remarks/>
+        <LocalizedString Lang="" TextState="Outdated"><![CDATA[You can't leave empty-handed though. You have a limited time to find something useful and make your escape.]]></LocalizedString>
+      </Text>
+      <Color>#C8E2E7</Color>
+      <TechnicalName>DFr_6CF77454</TechnicalName>
+      <ExternalId/>
+      <ShortId>0x6CF77454</ShortId>
+      <Url>articy://localhost/view/61d2af20-2ec1-435c-8178-55b98c14ca88/72057594037931373</Url>
+      <Features Count="0"/>
+      <Pins Count="2">
+        <Pin Id="0x0100000000000D70" Index="0" Semantic="Input">
+          <Expression/>
+        </Pin>
+        <Pin Id="0x0100000000000D71" Index="0" Semantic="Output">
+          <Expression/>
+        </Pin>
+      </Pins>
+      <Position X="650" Y="275"/>
+      <Size Width="225" Height="200"/>
+      <ZIndex>1</ZIndex>
+      <Speaker IdRef="0x0100000000000D5D"/>
+      <StageDirections/>
+      <MenuText/>
+    </DialogueFragment>
+    <DialogueFragment Id="0x0100000000000D7B">
+      <DisplayName><![CDATA[Tool Tips: "Use WASD to move around the warehou..."]]></DisplayName>
+      <Text Count="1" HasMarkup="1">
+        <Remarks/>
+        <LocalizedString Lang="" TextState="Outdated">Use WASD to move around the warehouse. Find at least one clue before the time runs out.</LocalizedString>
+      </Text>
+      <Color>#C8E2E7</Color>
+      <TechnicalName>DFr_FE949B51</TechnicalName>
+      <ExternalId/>
+      <ShortId>0xFE949B51</ShortId>
+      <Url>articy://localhost/view/61d2af20-2ec1-435c-8178-55b98c14ca88/72057594037931387</Url>
+      <Features Count="0"/>
+      <Pins Count="2">
+        <Pin Id="0x0100000000000D7E" Index="0" Semantic="Input">
+          <Expression/>
+        </Pin>
+        <Pin Id="0x0100000000000D7F" Index="0" Semantic="Output">
+          <Expression/>
+        </Pin>
+      </Pins>
+      <Position X="1050" Y="275"/>
+      <Size Width="225" Height="200"/>
+      <ZIndex>3</ZIndex>
+      <Speaker IdRef="0x0100000000000D5D"/>
+      <StageDirections/>
+      <MenuText/>
+    </DialogueFragment>
+    <DialogueFragment Id="0x0100000000000D82">
+      <DisplayName><![CDATA[Tool Tips: "There are 12 clues total in the war..."]]></DisplayName>
+      <Text Count="1" HasMarkup="1">
+        <Remarks/>
+        <LocalizedString Lang="" TextState="Outdated">There are 12 clues total in the warehouse. Something interesting may happen if you find them all. You will not be able to get them all in one day.</LocalizedString>
+      </Text>
+      <Color>#C8E2E7</Color>
+      <TechnicalName>DFr_5EE2F272</TechnicalName>
+      <ExternalId/>
+      <ShortId>0x5EE2F272</ShortId>
+      <Url>articy://localhost/view/61d2af20-2ec1-435c-8178-55b98c14ca88/72057594037931394</Url>
+      <Features Count="0"/>
+      <Pins Count="2">
+        <Pin Id="0x0100000000000D85" Index="0" Semantic="Input">
+          <Expression/>
+        </Pin>
+        <Pin Id="0x0100000000000D86" Index="0" Semantic="Output">
+          <Expression/>
+        </Pin>
+      </Pins>
+      <Position X="1425" Y="250"/>
+      <Size Width="225" Height="200"/>
+      <ZIndex>5</ZIndex>
+      <Speaker IdRef="0x0100000000000D5D"/>
+      <StageDirections/>
+      <MenuText/>
+    </DialogueFragment>
+    <DialogueFragment Id="0x0100000000000D89">
+      <DisplayName><![CDATA[Tool Tips: "You've been spotted by a guard! Com..."]]></DisplayName>
+      <Text Count="1" HasMarkup="1">
+        <Remarks/>
+        <LocalizedString Lang="" TextState="InProgress"><![CDATA[You've been spotted by a guard! Combat has begun.]]></LocalizedString>
+      </Text>
+      <Color>#C8E2E7</Color>
+      <TechnicalName>DFr_9D0367E6</TechnicalName>
+      <ExternalId/>
+      <ShortId>0x9D0367E6</ShortId>
+      <Url>articy://localhost/view/61d2af20-2ec1-435c-8178-55b98c14ca88/72057594037931401</Url>
+      <Features Count="0"/>
+      <Pins Count="2">
+        <Pin Id="0x0100000000000D8C" Index="0" Semantic="Input">
+          <Expression/>
+        </Pin>
+        <Pin Id="0x0100000000000D8D" Index="0" Semantic="Output">
+          <Expression/>
+        </Pin>
+      </Pins>
+      <Position X="575" Y="375"/>
+      <Size Width="225" Height="200"/>
+      <ZIndex>0</ZIndex>
+      <Speaker IdRef="0x0100000000000D5D"/>
+      <StageDirections/>
+      <MenuText/>
+    </DialogueFragment>
+    <DialogueFragment Id="0x0100000000000D8F">
+      <DisplayName><![CDATA[Tool Tips: "Combat is turn-based. Once you have..."]]></DisplayName>
+      <Text Count="1" HasMarkup="1">
+        <Remarks/>
+        <LocalizedString Lang="" TextState="Outdated">Combat is turn-based. Once you have made moves for all your party members, enemies will take their turn.</LocalizedString>
+      </Text>
+      <Color>#C8E2E7</Color>
+      <TechnicalName>DFr_4911CB3C</TechnicalName>
+      <ExternalId/>
+      <ShortId>0x4911CB3C</ShortId>
+      <Url>articy://localhost/view/61d2af20-2ec1-435c-8178-55b98c14ca88/72057594037931407</Url>
+      <Features Count="0"/>
+      <Pins Count="2">
+        <Pin Id="0x0100000000000D92" Index="0" Semantic="Input">
+          <Expression/>
+        </Pin>
+        <Pin Id="0x0100000000000D93" Index="0" Semantic="Output">
+          <Expression/>
+        </Pin>
+      </Pins>
+      <Position X="950" Y="350"/>
+      <Size Width="225" Height="200"/>
+      <ZIndex>1</ZIndex>
+      <Speaker IdRef="0x0100000000000D5D"/>
+      <StageDirections/>
+      <MenuText/>
+    </DialogueFragment>
+    <DialogueFragment Id="0x0100000000000D96">
+      <DisplayName><![CDATA[Tool Tips: "Click on a character to move it. Yo..."]]></DisplayName>
+      <Text Count="1" HasMarkup="1">
+        <Remarks/>
+        <LocalizedString Lang="" TextState="InProgress">Click on a character to move it. You can move to any square highlighted in blue.</LocalizedString>
+      </Text>
+      <Color>#C8E2E7</Color>
+      <TechnicalName>DFr_50B8E5D8</TechnicalName>
+      <ExternalId/>
+      <ShortId>0x50B8E5D8</ShortId>
+      <Url>articy://localhost/view/61d2af20-2ec1-435c-8178-55b98c14ca88/72057594037931414</Url>
+      <Features Count="0"/>
+      <Pins Count="2">
+        <Pin Id="0x0100000000000D99" Index="0" Semantic="Input">
+          <Expression/>
+        </Pin>
+        <Pin Id="0x0100000000000D9A" Index="0" Semantic="Output">
+          <Expression/>
+        </Pin>
+      </Pins>
+      <Position X="1300" Y="325"/>
+      <Size Width="225" Height="200"/>
+      <ZIndex>3</ZIndex>
+      <Speaker IdRef="0x0100000000000D5D"/>
+      <StageDirections/>
+      <MenuText/>
+    </DialogueFragment>
+    <DialogueFragment Id="0x0100000000000D9D">
+      <DisplayName><![CDATA[Tool Tips: "Try moving your character next to a..."]]></DisplayName>
+      <Text Count="1" HasMarkup="1">
+        <Remarks/>
+        <LocalizedString Lang="" TextState="Outdated">Try moving your character next to a guard. To attack, click your character, click attack, then click your preferred target.</LocalizedString>
+      </Text>
+      <Color>#C8E2E7</Color>
+      <TechnicalName>DFr_0F1F01D7</TechnicalName>
+      <ExternalId/>
+      <ShortId>0x0F1F01D7</ShortId>
+      <Url>articy://localhost/view/61d2af20-2ec1-435c-8178-55b98c14ca88/72057594037931421</Url>
+      <Features Count="0"/>
+      <Pins Count="2">
+        <Pin Id="0x0100000000000DA0" Index="0" Semantic="Input">
+          <Expression/>
+        </Pin>
+        <Pin Id="0x0100000000000DA1" Index="0" Semantic="Output">
+          <Expression/>
+        </Pin>
+      </Pins>
+      <Position X="1625" Y="300"/>
+      <Size Width="225" Height="200"/>
+      <ZIndex>5</ZIndex>
+      <Speaker IdRef="0x0100000000000D5D"/>
+      <StageDirections/>
+      <MenuText/>
+    </DialogueFragment>
     <Entity Id="0x0100000000000164" ObjectTemplateReference="0x01000000000000A8" ObjectTemplateReferenceName="DefaultMainCharacterTemplate">
       <DisplayName Count="1">
         <Remarks/>
@@ -12642,6 +12996,9 @@ Okay, I understand [Act1Variables.player]. I’m with you, at least for a little
         </Feature>
       </Features>
       <References Count="0"/>
+      <PreviewImage IdRef="0x0100000000000DF3" Mode="FromAsset">
+        <ViewBox MinX="0" MinY="0" MaxX="0" MaxY="0"/>
+      </PreviewImage>
     </Entity>
     <Entity Id="0x01000000000001B5" ObjectTemplateReference="0x01000000000000A8" ObjectTemplateReferenceName="DefaultMainCharacterTemplate">
       <DisplayName Count="1">
@@ -12678,6 +13035,9 @@ Okay, I understand [Act1Variables.player]. I’m with you, at least for a little
         </Feature>
       </Features>
       <References Count="0"/>
+      <PreviewImage IdRef="0x0100000000000DF6" Mode="FromAsset">
+        <ViewBox MinX="0" MinY="0" MaxX="0" MaxY="0"/>
+      </PreviewImage>
     </Entity>
     <Entity Id="0x01000000000001B9" ObjectTemplateReference="0x010000000000007E" ObjectTemplateReferenceName="DefaultSupportingCharacterTemplate">
       <DisplayName Count="1">
@@ -12703,6 +13063,19 @@ Okay, I understand [Act1Variables.player]. I’m with you, at least for a little
           </Properties>
         </Feature>
       </Features>
+      <References Count="0"/>
+    </Entity>
+    <Entity Id="0x0100000000000D5D">
+      <DisplayName Count="1">
+        <Remarks/>
+        <LocalizedString Lang="" TextState="Outdated">Tool Tips</LocalizedString>
+      </DisplayName>
+      <Color>#C8E2E7</Color>
+      <TechnicalName>Ntt_6AF24F64</TechnicalName>
+      <ExternalId/>
+      <ShortId>0x6AF24F64</ShortId>
+      <Url>articy://localhost/view/61d2af20-2ec1-435c-8178-55b98c14ca88/72057594037931357</Url>
+      <Features Count="0"/>
       <References Count="0"/>
     </Entity>
     <FeatureDefinition Id="0x010000000000000F">
@@ -14373,6 +14746,24 @@ Okay, I understand [Act1Variables.player]. I’m with you, at least for a little
           <Node IdRef="0x0100000000000BCF" Type="Connection"/>
         </Node>
         <Node IdRef="0x0100000000000A92" Type="Connection"/>
+        <Node IdRef="0x0100000000000D4D" Type="Dialogue">
+          <Node IdRef="0x0100000000000D61" Type="DialogueFragment"/>
+          <Node IdRef="0x0100000000000D6D" Type="DialogueFragment"/>
+          <Node IdRef="0x0100000000000D72" Type="Connection"/>
+          <Node IdRef="0x0100000000000D7B" Type="DialogueFragment"/>
+          <Node IdRef="0x0100000000000D80" Type="Connection"/>
+          <Node IdRef="0x0100000000000D82" Type="DialogueFragment"/>
+          <Node IdRef="0x0100000000000D87" Type="Connection"/>
+        </Node>
+        <Node IdRef="0x0100000000000D66" Type="Dialogue">
+          <Node IdRef="0x0100000000000D89" Type="DialogueFragment"/>
+          <Node IdRef="0x0100000000000D8F" Type="DialogueFragment"/>
+          <Node IdRef="0x0100000000000D94" Type="Connection"/>
+          <Node IdRef="0x0100000000000D96" Type="DialogueFragment"/>
+          <Node IdRef="0x0100000000000D9B" Type="Connection"/>
+          <Node IdRef="0x0100000000000D9D" Type="DialogueFragment"/>
+          <Node IdRef="0x0100000000000DA2" Type="Connection"/>
+        </Node>
       </Node>
       <Node IdRef="0x030000003140D3AC" Type="Locations"/>
       <Node IdRef="0x03000000AC61A2B3" Type="Entities">
@@ -14380,10 +14771,14 @@ Okay, I understand [Act1Variables.player]. I’m with you, at least for a little
         <Node IdRef="0x01000000000001B1" Type="Entity"/>
         <Node IdRef="0x01000000000001B5" Type="Entity"/>
         <Node IdRef="0x01000000000001B9" Type="Entity"/>
+        <Node IdRef="0x0100000000000D5D" Type="Entity"/>
       </Node>
       <Node IdRef="0x030000004C3DAF54" Type="Assets">
         <Node IdRef="0x0100000000000113" Type="AssetsUserFolder">
-          <Node IdRef="0x010000000000011D" Type="AssetsUserFolder"/>
+          <Node IdRef="0x010000000000011D" Type="AssetsUserFolder">
+            <Node IdRef="0x0100000000000DF3" Type="Asset"/>
+            <Node IdRef="0x0100000000000DF6" Type="Asset"/>
+          </Node>
         </Node>
         <Node IdRef="0x0100000000000115" Type="AssetsUserFolder"/>
         <Node IdRef="0x0100000000000117" Type="AssetsUserFolder"/>
