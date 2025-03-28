@@ -4,14 +4,14 @@ public class ExplorationManager : MonoBehaviour
 {
     public GameObject combatManager; // Reference to CombatManager
 
-    void Start()
+/*    void Start()
     {
         // Ensure ExplorationManager is ON at start if combat is active
         if (combatManager != null && combatManager.activeSelf)
         {
             gameObject.SetActive(false); // Disable Exploration Mode if Combat is running
         }
-    }
+    }*/
 
     void Awake()
     {
