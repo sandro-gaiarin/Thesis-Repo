@@ -7,6 +7,8 @@ public class CameraTriggers : MonoBehaviour
 {
     // [SerializeField] private CinemachineVirtualCamera [] _cameraSettings;
     // [SerializeField] private int _whichCamera;
+
+    [Header("Cameras")]
     public CinemachineVirtualCamera R1Camera;
     public CinemachineVirtualCamera R2Camera;
     public CinemachineVirtualCamera R3Camera;
@@ -19,6 +21,12 @@ public class CameraTriggers : MonoBehaviour
     public CinemachineVirtualCamera Store2Camera;
     public CinemachineVirtualCamera Store3Camera;
     public CinemachineVirtualCamera WCCamera;
+
+    [Header("Walls")]
+
+    public Renderer Store3Walls;
+    public Renderer WC1Walls;
+    public Renderer WC2Walls;
 
 
     private void OnTriggerEnter(Collider other)
@@ -68,6 +76,12 @@ public class CameraTriggers : MonoBehaviour
         if (other.CompareTag("WCTrigger"))
         {
             CameraManager.SwitchCamera(WCCamera);
+            WC1Walls.ShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
+        }
+
+        if (other.CompareTag("WCClose"))
+        {
+            WC2Walls.ShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
         }
     }
 }
