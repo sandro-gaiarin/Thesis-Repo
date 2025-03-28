@@ -44,6 +44,8 @@ public class CameraTriggers : MonoBehaviour
         if (other.CompareTag("H3Trigger"))
         {
             CameraManager.SwitchCamera(H3Camera);
+            Store3Walls.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+            WC1Walls.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
         }
         if (other.CompareTag("H4Trigger"))
         {
@@ -60,6 +62,7 @@ public class CameraTriggers : MonoBehaviour
         if (other.CompareTag("Store3Trigger"))
         {
             CameraManager.SwitchCamera(Store3Camera);
+            Store3Walls.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
         }
         if (other.CompareTag("R1Trigger"))
         {
@@ -76,12 +79,13 @@ public class CameraTriggers : MonoBehaviour
         if (other.CompareTag("WCTrigger"))
         {
             CameraManager.SwitchCamera(WCCamera);
-            WC1Walls.ShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
+            WC1Walls.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
+            WC2Walls.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
         }
 
         if (other.CompareTag("WCClose"))
         {
-            WC2Walls.ShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
+            WC2Walls.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
         }
     }
 }

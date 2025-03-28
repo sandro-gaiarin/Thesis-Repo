@@ -22,6 +22,7 @@ TagManager:
   - R2Trigger
   - R3Trigger
   - WCTrigger
+  - WCClose
   layers:
   - Default
   - TransparentFX
