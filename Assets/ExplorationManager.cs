@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class ExplorationManager : MonoBehaviour
 {
-    public GameObject combatManager; // Reference to CombatManager
+    public GameObject combatManager; 
 
 /*    void Start()
     {
-        // Ensure ExplorationManager is ON at start if combat is active
+        
         if (combatManager != null && combatManager.activeSelf)
         {
             gameObject.SetActive(false); // Disable Exploration Mode if Combat is running
@@ -41,11 +41,11 @@ public class ExplorationManager : MonoBehaviour
     public void DisableExplorationMode()
     {
         Debug.Log("Exploration Mode Disabled!");
-        gameObject.SetActive(false); // Disable ExplorationManager
+        gameObject.SetActive(false); 
 
         if (combatManager)
         {
-            foreach (Transform child in combatManager.transform) // Fixed reference
+            foreach (Transform child in combatManager.transform) 
             {
                 child.gameObject.SetActive(true);
             }
@@ -55,13 +55,13 @@ public class ExplorationManager : MonoBehaviour
     public void EnableExplorationMode()
     {
         Debug.Log("Exploration Mode Enabled!");
-        gameObject.SetActive(true); // Enable ExplorationManager
+        gameObject.SetActive(true); 
 
         if (combatManager)
         {
-            foreach (Transform child in combatManager.transform) // Fixed reference
+            foreach (Transform child in combatManager.transform) 
             {
-                child.gameObject.SetActive(false); // Now properly disables CombatManager children
+                child.gameObject.SetActive(false); 
             }
         }
     }

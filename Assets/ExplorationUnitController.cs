@@ -12,10 +12,12 @@ public class ExplorationUnitController : MonoBehaviour
     void Start()
     {
         selectedUnit = GameObject.Find("Hacker");
+        unitSelected = true;
         gridManager = FindObjectOfType<GridManager>();
+        
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         HandleKeyboardInput();
@@ -28,13 +30,13 @@ public class ExplorationUnitController : MonoBehaviour
 
             if (hit.transform.CompareTag("PlayerUnit"))
             {
-                //ClearHighlightedTiles(); // Clear old highlights
+                //ClearHighlightedTiles(); 
 
                 selectedUnit = hit.transform.gameObject;
                 unitSelected = true;
 
-                // Directly call SnapToUnit to ensure camera updates immediately after selection
-                //cameraController.GetComponent<CameraScript>().SnapToUnit(selectedUnit);  // Pass selectedUnit directly
+               
+                //cameraController.GetComponent<CameraScript>().SnapToUnit(selectedUnit);  
 
                 //selectedUnitCurrentMovementPoints = selectedUnit.GetComponent<Unit>().currentMovementPoints;
                 //Debug.Log("Unit Selected");
@@ -87,43 +89,45 @@ public class ExplorationUnitController : MonoBehaviour
 
     void HandleKeyboardInput()
     {
+        
         if (selectedUnit != null && unitSelected)
         {
+            Debug.Log("in if statement");
             bool moved = false;
             Vector2Int moveDirection = Vector2Int.zero;
 
-            // Get the unit's Y-axis rotation
+            
             float unitRotation = selectedUnit.transform.eulerAngles.y;
-            unitRotation = Mathf.Round(unitRotation); // Round to avoid floating-point inaccuracies
+            unitRotation = Mathf.Round(unitRotation); 
 
-            // Adjust movement direction based on unit rotation
-            if (unitRotation == 0) // Facing North (Default)
+            
+            if (unitRotation == 0) 
             {
-                if (Input.GetKeyDown(KeyCode.W)) { moveDirection = new Vector2Int(0, 1); moved = true; }
-                else if (Input.GetKeyDown(KeyCode.S)) { moveDirection = new Vector2Int(0, -1); moved = true; }
-                else if (Input.GetKeyDown(KeyCode.A)) { moveDirection = new Vector2Int(-1, 0); moved = true; }
-                else if (Input.GetKeyDown(KeyCode.D)) { moveDirection = new Vector2Int(1, 0); moved = true; }
+                if (Input.GetKeyDown(KeyCode.W)) { moveDirection = new Vector2Int(0, 1); moved = true; Debug.Log("W Pressed"); }
+                else if (Input.GetKeyDown(KeyCode.S)) { moveDirection = new Vector2Int(0, -1); moved = true; Debug.Log("S Pressed"); }
+                else if (Input.GetKeyDown(KeyCode.A)) { moveDirection = new Vector2Int(-1, 0); moved = true; Debug.Log("A Pressed"); }
+                else if (Input.GetKeyDown(KeyCode.D)) { moveDirection = new Vector2Int(1, 0); moved = true; Debug.Log("D Pressed"); }
             }
-            else if (unitRotation == 270 || unitRotation == -90) // Facing West
+            else if (unitRotation == 270 || unitRotation == -90) 
             {
-                if (Input.GetKeyDown(KeyCode.W)) { moveDirection = new Vector2Int(-1, 0); moved = true; }
-                else if (Input.GetKeyDown(KeyCode.S)) { moveDirection = new Vector2Int(1, 0); moved = true; }
-                else if (Input.GetKeyDown(KeyCode.A)) { moveDirection = new Vector2Int(0, -1); moved = true; }
-                else if (Input.GetKeyDown(KeyCode.D)) { moveDirection = new Vector2Int(0, 1); moved = true; }
+                if (Input.GetKeyDown(KeyCode.W)) { moveDirection = new Vector2Int(-1, 0); moved = true; Debug.Log("W Pressed"); }
+                else if (Input.GetKeyDown(KeyCode.S)) { moveDirection = new Vector2Int(1, 0); moved = true; Debug.Log("S Pressed"); }
+                else if (Input.GetKeyDown(KeyCode.A)) { moveDirection = new Vector2Int(0, -1); moved = true; Debug.Log("A Pressed"); }
+                else if (Input.GetKeyDown(KeyCode.D)) { moveDirection = new Vector2Int(0, 1); moved = true; Debug.Log("D Pressed"); }
             }
             else if (unitRotation == 180 || unitRotation == -180) // Facing South
             {
-                if (Input.GetKeyDown(KeyCode.W)) { moveDirection = new Vector2Int(0, -1); moved = true; }
-                else if (Input.GetKeyDown(KeyCode.S)) { moveDirection = new Vector2Int(0, 1); moved = true; }
-                else if (Input.GetKeyDown(KeyCode.A)) { moveDirection = new Vector2Int(1, 0); moved = true; }
-                else if (Input.GetKeyDown(KeyCode.D)) { moveDirection = new Vector2Int(-1, 0); moved = true; }
+                if (Input.GetKeyDown(KeyCode.W)) { moveDirection = new Vector2Int(0, -1); moved = true; Debug.Log("W Pressed"); }
+                else if (Input.GetKeyDown(KeyCode.S)) { moveDirection = new Vector2Int(0, 1); moved = true; Debug.Log("S Pressed"); }
+                else if (Input.GetKeyDown(KeyCode.A)) { moveDirection = new Vector2Int(1, 0); moved = true; Debug.Log("A Pressed"); }
+                else if (Input.GetKeyDown(KeyCode.D)) { moveDirection = new Vector2Int(-1, 0); moved = true; Debug.Log("D Pressed"); }
             }
             else if (unitRotation == 90) // Facing East
             {
-                if (Input.GetKeyDown(KeyCode.W)) { moveDirection = new Vector2Int(1, 0); moved = true; }
-                else if (Input.GetKeyDown(KeyCode.S)) { moveDirection = new Vector2Int(-1, 0); moved = true; }
-                else if (Input.GetKeyDown(KeyCode.A)) { moveDirection = new Vector2Int(0, 1); moved = true; }
-                else if (Input.GetKeyDown(KeyCode.D)) { moveDirection = new Vector2Int(0, -1); moved = true; }
+                if (Input.GetKeyDown(KeyCode.W)) { moveDirection = new Vector2Int(1, 0); moved = true; Debug.Log("W Pressed"); }
+                else if (Input.GetKeyDown(KeyCode.S)) { moveDirection = new Vector2Int(-1, 0); moved = true; Debug.Log("S Pressed"); }
+                else if (Input.GetKeyDown(KeyCode.A)) { moveDirection = new Vector2Int(0, 1); moved = true; Debug.Log("A Pressed"); }
+                else if (Input.GetKeyDown(KeyCode.D)) { moveDirection = new Vector2Int(0, -1); moved = true; Debug.Log("D Pressed"); }
             }
 
             if (moved)
