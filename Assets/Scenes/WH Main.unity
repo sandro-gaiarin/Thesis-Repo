@@ -5812,6 +5812,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1148812617}
     m_Modifications:
+    - target: {fileID: 621833722886003210, guid: 252f4802588261744ab99e7f48412096, type: 3}
+      propertyPath: outlineMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1718045998223777288, guid: 252f4802588261744ab99e7f48412096, type: 3}
       propertyPath: m_Name
       value: shelf (1)
@@ -5855,6 +5859,10 @@ PrefabInstance:
     - target: {fileID: 2061638277157913778, guid: 252f4802588261744ab99e7f48412096, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172660361579740109, guid: 252f4802588261744ab99e7f48412096, type: 3}
+      propertyPath: outlineMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

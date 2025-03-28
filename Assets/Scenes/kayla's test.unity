@@ -2069,6 +2069,17 @@ MonoBehaviour:
   StraightCamera: {fileID: 1252900823}
   TurnCamera: {fileID: 1818128105}
   TopCamera: {fileID: 1724298970}
+  R1Camera: {fileID: 0}
+  R2Camera: {fileID: 0}
+  R3Camera: {fileID: 0}
+  H1Camera: {fileID: 0}
+  H2Camera: {fileID: 0}
+  H3Camera: {fileID: 0}
+  H4Camera: {fileID: 0}
+  Store1Camera: {fileID: 0}
+  Store2Camera: {fileID: 0}
+  Store3Camera: {fileID: 0}
+  WCCamera: {fileID: 0}
 --- !u!114 &1724298970 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4926663212003500602, guid: 3d9c526a4ea5c114ba4f3d372fb751b5, type: 3}
@@ -3408,6 +3419,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 621833722886003210, guid: 252f4802588261744ab99e7f48412096, type: 3}
+      propertyPath: outlineMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1718045998223777288, guid: 252f4802588261744ab99e7f48412096, type: 3}
       propertyPath: m_Name
       value: shelf
