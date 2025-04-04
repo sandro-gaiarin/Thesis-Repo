@@ -15469,6 +15469,7 @@ MonoBehaviour:
   inventoryManager: {fileID: 1663296490}
   highlightMaterial: {fileID: 2100000, guid: 583ca53c00badd94bb687ecdf16d8e16, type: 2}
   defaultMaterial: {fileID: 2100000, guid: 38d2a95fc96df2740876253fe6cb2c58, type: 2}
+  attackHighlightMaterial: {fileID: 2100000, guid: 1e6b5a3fb8806574ba6dd2d9f40883a1, type: 2}
 --- !u!4 &606067275
 Transform:
   m_ObjectHideFlags: 0
@@ -31497,6 +31498,7 @@ GameObject:
   - component: {fileID: 1225026188}
   - component: {fileID: 1225026187}
   - component: {fileID: 1225026186}
+  - component: {fileID: 1225026190}
   m_Layer: 0
   m_Name: Enemy 3
   m_TagString: EnemyUnit
@@ -31569,7 +31571,7 @@ Transform:
   m_GameObject: {fileID: 1225026185}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.16, y: 1, z: 6.79}
+  m_LocalPosition: {x: 3.16, y: 0.608, z: 6.952}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -31577,6 +31579,18 @@ Transform:
   - {fileID: 1684476949}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1225026190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225026185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661421b4afb4a344a94c92277da77f26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1225084547
 PrefabInstance:
   m_ObjectHideFlags: 0
