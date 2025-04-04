@@ -92,7 +92,7 @@ public class ExplorationUnitController : MonoBehaviour
         
         if (selectedUnit != null && unitSelected)
         {
-            Debug.Log("in if statement");
+            
             bool moved = false;
             Vector2Int moveDirection = Vector2Int.zero;
 
