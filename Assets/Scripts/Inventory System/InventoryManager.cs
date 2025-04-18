@@ -65,7 +65,7 @@ public class InventoryManager : MonoBehaviour
             items.Add(new NewInventoryItem(itemData, quantity));
         }
 
-        RefreshUI(); // Update the UI
+        InventoryUI.Instance?.RefreshUI();
     }
 
     public void RemoveItem(ItemData itemData, int amount)
@@ -92,7 +92,7 @@ public class InventoryManager : MonoBehaviour
     }
 
 
-    private void RefreshUI()
+    /*private void RefreshUI()
     {
         // Clear existing slots
         foreach (Transform child in itemContainer)
@@ -111,5 +111,5 @@ public class InventoryManager : MonoBehaviour
                 itemSlot.SetItem(item.itemData.itemName, item.quantity, item.itemData.description);
             }
         }
-    }
+    }*/
 }

@@ -141,6 +141,12 @@ public class InventoryUI : MonoBehaviour
             slots.Add(slot);
 
             Image icon = slot.GetComponentInChildren<Image>();
+
+            InventorySlotScript itemSlot = slot.GetComponent<InventorySlotScript>();
+            if (itemSlot != null)
+            {
+                itemSlot.SetItemName(item.itemData.itemName);
+            }
             if (icon)
             {
                 icon.sprite = item.itemData.icon;

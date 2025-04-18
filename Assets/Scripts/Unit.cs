@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,8 +11,9 @@ public class Unit : MonoBehaviour
     public int attackDamage = 1;
     public int health = 10;
     public GameObject target;
-    public GameObject unitController;
+    [SerializeField] public GameObject unitController;
     public int numberOfActions = 1;
+    [SerializeField] public string unitName;
     
     
 
@@ -40,10 +41,22 @@ public class Unit : MonoBehaviour
     {
         Debug.Log($"{gameObject.name} died.");
         Destroy(gameObject);
+
+        if (EnemyUIController.Instance != null)
+        {
+            EnemyUIController.Instance.HideEnemyInfo();
+        }
     }
 
     public void Attack(Unit target)
     {
+        if (target == null)
+        {
+            Debug.LogWarning($"{gameObject.name} tried to attack, but target was null.");
+            unitController.GetComponent<UnitController>().isAttacking = false;
+            return;
+        }
+
         Vector2Int currentPosition = new Vector2Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.z));
         Vector2Int targetPosition = new Vector2Int(Mathf.RoundToInt(target.transform.position.x), Mathf.RoundToInt(target.transform.position.z));
 
@@ -53,17 +66,46 @@ public class Unit : MonoBehaviour
         if (distance <= attackRange)
         {
             DamageRoll();
-            target.TakeDamage(attackDamage);
-            Debug.Log($"{gameObject.name} attacked {target.gameObject.name} for {attackDamage} damage.");
-            unitController.GetComponent<UnitController>().isAttacking = false;
-            numberOfActions--; // Ensure the enemy can only attack once
+
+            // Double check target isn't already destroyed
+            if (target != null)
+            {
+                target.TakeDamage(attackDamage);
+                Debug.Log($"{gameObject.name} attacked {target.gameObject.name} for {attackDamage} damage.");
+
+                // ✅ Only update UI if target is still alive and tagged correctly
+                if (EnemyUIController.Instance != null && target.health > 0 && target.CompareTag("EnemyUnit"))
+                {
+                    EnemyUIController.Instance.ShowEnemyInfo(target.unitName, target.health);
+                }
+            }
+
+            if (unitController != null)
+            {
+                UnitController controller = unitController.GetComponent<UnitController>();
+                if (controller != null)
+                {
+                    controller.isAttacking = false;
+                }
+            }
+
+            numberOfActions--;
         }
         else
         {
             Debug.Log($"{gameObject.name} cannot attack {target.gameObject.name} because it is out of range.");
-            unitController.GetComponent<UnitController>().isAttacking = false;
+
+            if (unitController != null)
+            {
+                UnitController controller = unitController.GetComponent<UnitController>();
+                if (controller != null)
+                {
+                    controller.isAttacking = false;
+                }
+            }
         }
     }
+
 
     public void ResetMovementPoints()
     {
