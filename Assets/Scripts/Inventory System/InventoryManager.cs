@@ -9,6 +9,7 @@ public class InventoryManager : MonoBehaviour
     public GameObject inventoryCanvas; // UI Panel for inventory
     public Transform itemContainer; // Parent object that holds item slots
     public GameObject itemSlotPrefab; // Prefab for inventory slot
+    public int playerCoins = 10; // Starting coin value
 
     private bool menuActivated = false; // Inventory toggle state
 
@@ -89,6 +90,21 @@ public class InventoryManager : MonoBehaviour
         }
 
         InventoryUI.Instance?.RefreshUI();
+    }
+
+    public bool SpendCoins(int amount)
+    {
+        if (playerCoins >= amount)
+        {
+            playerCoins -= amount;
+            return true;
+        }
+        return false;
+    }
+
+    public void AddCoins(int amount)
+    {
+        playerCoins += amount;
     }
 
 

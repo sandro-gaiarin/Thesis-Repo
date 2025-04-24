@@ -1,81 +1,54 @@
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
+using TMPro;
 
 public class ShopUI : MonoBehaviour
 {
-    public Inventory inventory; // Reference to player's inventory
-    public List<ItemData> shopItems = new List<ItemData>(); // List of available shop items
-    public GameObject shopItemPrefab; // Prefab for shop items
-    public Transform shopItemContainer; // Parent object holding shop item buttons
-    public int playerCoins = 50; // Starting money
-    public TMP_Text coinText; // UI text for coins
-    public ShopTooltip shopTooltip;
-    public ShopInventoryUI shopInventoryUI; // Reference to the shop's inventory panel UI
+    public static ShopUI Instance;
 
-    private List<GameObject> shopButtons = new List<GameObject>();
+    public GameObject shopItemPrefab;
+    public Transform shopItemContainer;
+    public TMP_Text coinText;
 
-    void Start()
+    private void Awake()
     {
-        RefreshShop();
-        UpdateCoinText();
-        shopInventoryUI.RefreshInventory(); // Ensure the shop inventory starts fresh
+        Instance = this;
     }
 
-    void RefreshShop()
+    private void Start()
     {
-        foreach (GameObject button in shopButtons)
+        RefreshShopUI();
+        UpdateCoinDisplay();
+    }
+
+    public void RefreshShopUI()
+    {
+        foreach (Transform child in shopItemContainer)
         {
-            Destroy(button);
+            Destroy(child.gameObject);
         }
-        shopButtons.Clear();
 
-        foreach (ItemData item in shopItems)
+        foreach (ItemData item in ShopManager.Instance.availableItems)
         {
-            GameObject shopButton = Instantiate(shopItemPrefab, shopItemContainer);
-            shopButtons.Add(shopButton);
+            GameObject slot = Instantiate(shopItemPrefab, shopItemContainer);
+            ShopItemSlot shopItemSlot = slot.GetComponent<ShopItemSlot>();
 
-            // Set button text
-            TMP_Text buttonText = shopButton.GetComponentInChildren<TMP_Text>();
-            if (buttonText)
-                buttonText.text = $"{item.itemName} ${item.price}";
+            if (shopItemSlot != null)
+            {
+                shopItemSlot.Setup(item);
+            }
+        }
 
-            // Set item icon
-            Image itemIcon = shopButton.GetComponentInChildren<Image>();
-            if (itemIcon)
-                itemIcon.sprite = item.icon;
+        coinText.text = $"Coins: {ShopManager.Instance.playerCoins}";
+    }
 
-            // Add button click event for purchasing
-            Button button = shopButton.GetComponent<Button>();
-            if (button)
-                button.onClick.AddListener(() => BuyItem(item));
-
-            // Tooltip Events
-            ShopItemHover hoverHandler = shopButton.AddComponent<ShopItemHover>();
-            hoverHandler.shopTooltip = shopTooltip;
-            hoverHandler.itemDescription = item.description;
+    public void UpdateCoinDisplay()
+    {
+        if (coinText != null)
+        {
+            coinText.text = $"Coins: {InventoryManager.Instance.playerCoins}";
         }
     }
 
-    void BuyItem(ItemData item)
-    {
-        if (playerCoins >= item.price)
-        {
-            playerCoins -= item.price;
-            inventory.AddItem(item, 1);
-            UpdateCoinText();
-            shopInventoryUI.RefreshInventory(); // Update the player's inventory panel
-            Debug.Log($"Bought {item.itemName}!");
-        }
-        else
-        {
-            Debug.Log("Not enough coins!");
-        }
-    }
-
-    void UpdateCoinText()
-    {
-        coinText.text = "Dollars: " + playerCoins;
-    }
 }
