@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 79f8cdf2b21435a41ad19fe9bee363c1, type: 2}
+  - {fileID: 2100000, guid: 767e3a0f887cd744f9928466bc989e1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c71576fb5f6c7c448a2549eadb8938e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cords: {x: 0, y: 0}
+  cords: {x: 14, y: -4}
   movementCost: 1
 --- !u!65 &9191286097214296305
 BoxCollider:
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0,0
+  m_text: 14,-4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
