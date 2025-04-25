@@ -157,11 +157,11 @@ RectTransform:
   m_LocalScale: {x: 0.9999875, y: 0.9999875, z: 0.9999875}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 214493261}
+  m_Father: {fileID: 1425950053}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.49280575, y: 0.9554075}
   m_AnchorMax: {x: 0.49280575, y: 0.9554075}
-  m_AnchoredPosition: {x: 55.764008, y: 92.74036}
+  m_AnchoredPosition: {x: -1.6724625, y: 5.2458344}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5494955
@@ -3786,6 +3786,7 @@ MonoBehaviour:
   inventoryCanvas: {fileID: 0}
   itemContainer: {fileID: 0}
   itemSlotPrefab: {fileID: 4985237537725428564, guid: e608fdb22b28eaf458103491d5779a3b, type: 3}
+  playerCoins: 10
 --- !u!1001 &142069776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4260,7 +4261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4826,12 +4827,12 @@ GameObject:
   - component: {fileID: 214493261}
   - component: {fileID: 214493262}
   m_Layer: 5
-  m_Name: Enemy UI Redo
+  m_Name: EnemyUIPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &214493261
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4845,13 +4846,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1425950053}
-  - {fileID: 5494954}
-  - {fileID: 791943456}
-  m_Father: {fileID: 1012412937}
+  m_Father: {fileID: 2119181891}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -200, y: -20}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &214493262
@@ -5138,7 +5137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5521,7 +5520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6663,7 +6662,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 92.9, y: 182.1}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &315011376
@@ -8533,7 +8532,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &382589085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8949,7 +8948,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &402749659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9171,7 +9170,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9765,7 +9764,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9997,7 +9996,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11744,7 +11743,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11825,7 +11824,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12440,7 +12439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12754,7 +12753,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13817,7 +13816,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14447,6 +14446,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2621409093657137201, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
+      propertyPath: m_TagString
+      value: Unwalkable
+      objectReference: {fileID: 0}
     - target: {fileID: 2817011015395281357, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_text
       value: 2,8
@@ -15071,7 +15074,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16525,7 +16528,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17875,7 +17878,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 119, y: 59}
+  m_AnchoredPosition: {x: 119, y: 210}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &706461252
@@ -18093,6 +18096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7da909fa41ca8a94a85752e14cca1a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _healthBarSprite: {fileID: 0}
 --- !u!4 &719705302 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1970853504561863066, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
@@ -20073,7 +20077,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20415,18 +20419,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 791943455}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2062472755}
   - {fileID: 710625811}
-  m_Father: {fileID: 214493261}
+  m_Father: {fileID: 1425950053}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -8.818898}
+  m_AnchoredPosition: {x: -60.47248, y: -56.69291}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &792131675
@@ -22957,7 +22961,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23048,7 +23052,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23392,25 +23396,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2817011015395281357, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
-      propertyPath: m_text
-      value: -1,7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6720835728080366392, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
-      propertyPath: cords.x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6720835728080366392, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
-      propertyPath: cords.y
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_Name
       value: (-1, 7)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
-      propertyPath: m_TagString
-      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -24578,7 +24566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26503,7 +26491,6 @@ RectTransform:
   - {fileID: 382589088}
   - {fileID: 2119181891}
   - {fileID: 1426500258}
-  - {fileID: 214493261}
   m_Father: {fileID: 1527501628}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -27270,7 +27257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29660,7 +29647,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -31044,7 +31031,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -33948,7 +33935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -34094,7 +34081,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -36788,7 +36775,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5494954}
+  - {fileID: 791943456}
   m_Father: {fileID: 214493261}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -37622,7 +37611,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1447870803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37700,25 +37689,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2817011015395281357, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
-      propertyPath: m_text
-      value: 2,20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6720835728080366392, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
-      propertyPath: cords.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6720835728080366392, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
-      propertyPath: cords.y
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_Name
       value: (2, 20)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
-      propertyPath: m_TagString
-      value: Tile
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -38396,7 +38369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -39282,7 +39255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -42529,7 +42502,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -44514,7 +44487,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -45165,7 +45138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -46724,6 +46697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7da909fa41ca8a94a85752e14cca1a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _healthBarSprite: {fileID: 0}
 --- !u!1 &1805533005
 GameObject:
   m_ObjectHideFlags: 0
@@ -48629,7 +48603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -52183,7 +52157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -52669,7 +52643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -52855,7 +52829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -53601,7 +53575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -53715,7 +53689,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -53796,7 +53770,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -56232,7 +56206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396881296053711534, guid: d1f45d9556a2d7d4ebc91851ad56d555, type: 3}
       propertyPath: m_TagString
-      value: Tile
+      value: Unwalkable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -56951,6 +56925,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2081173159}
+  - {fileID: 214493261}
   m_Father: {fileID: 1012412937}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -58155,7 +58130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2925518130185413129, guid: 614e1172fcc50c7479d351af109c5ea6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.952
+      value: 12.8
       objectReference: {fileID: 0}
     - target: {fileID: 2925518130185413129, guid: 614e1172fcc50c7479d351af109c5ea6, type: 3}
       propertyPath: m_LocalRotation.w

@@ -6,41 +6,258 @@ public class EnemyAI : MonoBehaviour
 {
     private GridManager gridManager;
     private Unit unit;
+    private CombatManager combatManager;
+    private ExplorationManager explorationManager;
+    private bool snappedToTile = false;
+
+    private List<Vector2Int> patrolPoints = new List<Vector2Int>();
+    private int patrolIndex = 0;
+    private float patrolSpeed = 2f;
+    private float reachThreshold = 0.1f;
+    private float patrolStepDelay = 0.5f;
+    private Coroutine patrolRoutine;
+
+    private bool patrolForward = true;
+
+
 
     private void Start()
     {
         gridManager = FindObjectOfType<GridManager>();
         unit = GetComponent<Unit>();
+        combatManager = FindObjectOfType<CombatManager>();
+        explorationManager = FindObjectOfType<ExplorationManager>();
+
+        SnapToNearestWalkableTile();
+        GeneratePatrolPoints();
+    }
+
+    private void Update()
+    {
+        if (!snappedToTile || combatManager == null) return;
+
+        if (!combatManager.combatActive && patrolPoints.Count > 0)
+        {
+            if (patrolRoutine == null)
+            {
+                patrolRoutine = StartCoroutine(PatrolRoutine());
+            }
+
+            if (DetectNearbyPlayer())
+            {
+                combatManager.TriggerCombat();
+
+                // Stop patrol immediately on combat
+                if (patrolRoutine != null)
+                {
+                    StopCoroutine(patrolRoutine);
+                    patrolRoutine = null;
+                }
+            }
+        }
+        else
+        {
+            // Stop patrol if combat starts
+            if (patrolRoutine != null)
+            {
+                StopCoroutine(patrolRoutine);
+                patrolRoutine = null;
+            }
+        }
+    }
+
+
+    private void SnapToNearestWalkableTile()
+    {
+        Vector2Int approxGridPos = new Vector2Int(
+            Mathf.RoundToInt(transform.position.x / gridManager.UnityGridSize),
+            Mathf.RoundToInt(transform.position.z / gridManager.UnityGridSize)
+        );
+
+        Vector2Int bestSpot = FindNearestWalkableTile(approxGridPos);
+        transform.position = new Vector3(
+            bestSpot.x * gridManager.UnityGridSize,
+            transform.position.y,
+            bestSpot.y * gridManager.UnityGridSize
+        );
+
+        snappedToTile = true;
+    }
+
+    private Vector2Int FindNearestWalkableTile(Vector2Int center)
+    {
+        int maxRadius = 2;
+        for (int radius = 0; radius <= maxRadius; radius++)
+        {
+            for (int dx = -radius; dx <= radius; dx++)
+            {
+                for (int dy = -radius; dy <= radius; dy++)
+                {
+                    Vector2Int checkPos = center + new Vector2Int(dx, dy);
+                    GameObject tile = gridManager.GetTileGameObjectAtPosition(checkPos);
+
+                    if (tile != null && !tile.CompareTag("Unwalkable"))
+                    {
+                        return checkPos;
+                    }
+                }
+            }
+        }
+
+        Debug.LogWarning("No walkable tile found nearby. Using current position.");
+        return center;
+    }
+
+    private void GeneratePatrolPoints()
+    {
+        Vector2Int origin = new Vector2Int(
+            Mathf.RoundToInt(transform.position.x / gridManager.UnityGridSize),
+            Mathf.RoundToInt(transform.position.z / gridManager.UnityGridSize)
+        );
+
+        patrolPoints.Clear();
+        int radius = 3;
+
+        List<Vector2Int> horizontal = new List<Vector2Int>();
+        List<Vector2Int> vertical = new List<Vector2Int>();
+
+        // Scan horizontal
+        for (int dx = -radius; dx <= radius; dx++)
+        {
+            Vector2Int checkPos = new Vector2Int(origin.x + dx, origin.y);
+            if (dx == 0) continue; // skip center, add later
+            GameObject tile = gridManager.GetTileGameObjectAtPosition(checkPos);
+            if (tile != null && !tile.CompareTag("Unwalkable"))
+            {
+                horizontal.Add(checkPos);
+            }
+        }
+
+        // Scan vertical
+        for (int dy = -radius; dy <= radius; dy++)
+        {
+            Vector2Int checkPos = new Vector2Int(origin.x, origin.y + dy);
+            if (dy == 0) continue; // skip center, add later
+            GameObject tile = gridManager.GetTileGameObjectAtPosition(checkPos);
+            if (tile != null && !tile.CompareTag("Unwalkable"))
+            {
+                vertical.Add(checkPos);
+            }
+        }
+
+        // Choose the longer path
+        List<Vector2Int> selectedPath = (horizontal.Count >= vertical.Count) ? horizontal : vertical;
+
+        // Add origin back into patrol loop if it's walkable
+        GameObject originTile = gridManager.GetTileGameObjectAtPosition(origin);
+        if (originTile != null && !originTile.CompareTag("Unwalkable"))
+        {
+            selectedPath.Add(origin);
+        }
+
+        // Sort path for consistent movement order
+        selectedPath.Sort((a, b) =>
+        {
+            // Horizontal: sort by x, vertical: sort by y
+            return (horizontal.Count >= vertical.Count)
+                ? a.x.CompareTo(b.x)
+                : a.y.CompareTo(b.y);
+        });
+
+        patrolPoints = selectedPath;
+
+        if (patrolPoints.Count == 0)
+        {
+            Debug.LogError("No walkable patrol points found. Enemy will stand still.");
+        }
+        else
+        {
+            Debug.Log($"Generated {patrolPoints.Count} patrol points ({(horizontal.Count >= vertical.Count ? "horizontal" : "vertical")}).");
+        }
+    }
+
+    private void Patrol()
+    {
+        if (patrolPoints.Count == 0) return;
+
+        Vector2Int targetGridPos = patrolPoints[patrolIndex];
+
+        // Instantly snap to the target tile
+        transform.position = new Vector3(
+            targetGridPos.x * gridManager.UnityGridSize,
+            transform.position.y,
+            targetGridPos.y * gridManager.UnityGridSize
+        );
+
+        // Determine next index based on direction
+        if (patrolForward)
+        {
+            patrolIndex++;
+            if (patrolIndex >= patrolPoints.Count)
+            {
+                patrolIndex = patrolPoints.Count - 2;
+                patrolForward = false;
+            }
+        }
+        else
+        {
+            patrolIndex--;
+            if (patrolIndex < 0)
+            {
+                patrolIndex = 1;
+                patrolForward = true;
+            }
+        }
+    }
+
+
+    private IEnumerator PatrolRoutine()
+    {
+        while (true)
+        {
+            Patrol();
+            yield return new WaitForSeconds(patrolStepDelay);
+        }
+    }
+
+
+
+
+    private bool DetectNearbyPlayer()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("PlayerUnit");
+        foreach (GameObject player in players)
+        {
+            float distance = Vector3.Distance(transform.position, player.transform.position);
+            if (distance < 2.0f)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public IEnumerator EnemyTurn()
     {
-        // Continue moving while the unit has movement points
         while (unit.HasMovementPoints())
         {
-            // Move towards the player, but only if not adjacent
             MoveTowardsNearestPlayer();
 
-            // Check if the enemy is adjacent to a player unit and attack
             if (AttackNearestPlayerUnit())
             {
-                // End the enemy turn after attacking
                 break;
             }
 
-            // Wait for a short time before making the next move
-            yield return new WaitForSeconds(1f); // Adjust delay as needed
+            yield return new WaitForSeconds(1f);
         }
     }
 
     private void MoveTowardsNearestPlayer()
     {
-        Debug.Log("Enemy is moving");
         GameObject[] playerUnits = GameObject.FindGameObjectsWithTag("PlayerUnit");
         GameObject nearestPlayer = null;
         float shortestDistance = Mathf.Infinity;
 
-        // Find the nearest player unit
         foreach (GameObject player in playerUnits)
         {
             float distance = Vector3.Distance(transform.position, player.transform.position);
@@ -63,59 +280,41 @@ public class EnemyAI : MonoBehaviour
                 Mathf.RoundToInt(nearestPlayer.transform.position.z / gridManager.UnityGridSize)
             );
 
-            // Check for cardinal adjacency
-            int xDifference = Mathf.Abs(targetGridPosition.x - currentGridPosition.x);
-            int yDifference = Mathf.Abs(targetGridPosition.y - currentGridPosition.y);
+            int xDiff = Mathf.Abs(targetGridPosition.x - currentGridPosition.x);
+            int yDiff = Mathf.Abs(targetGridPosition.y - currentGridPosition.y);
 
-            // If the enemy is adjacent in cardinal directions, stop moving
-            if ((xDifference == 1 && yDifference == 0) || (xDifference == 0 && yDifference == 1))
+            if ((xDiff == 1 && yDiff == 0) || (xDiff == 0 && yDiff == 1))
             {
-                Debug.Log("Enemy is adjacent to the player, stopping.");
-                unit.currentMovementPoints = 0; // Stop moving
-                return; // Stop movement
+                unit.currentMovementPoints = 0;
+                return;
             }
 
-            // Calculate the direction towards the player, but restrict to cardinal movement
             Vector2Int direction = new Vector2Int(
-                (targetGridPosition.x > currentGridPosition.x) ? 1 :
-                (targetGridPosition.x < currentGridPosition.x) ? -1 : 0,
-                (targetGridPosition.y > currentGridPosition.y) ? 1 :
-                (targetGridPosition.y < currentGridPosition.y) ? -1 : 0
+                (targetGridPosition.x > currentGridPosition.x) ? 1 : (targetGridPosition.x < currentGridPosition.x) ? -1 : 0,
+                (targetGridPosition.y > currentGridPosition.y) ? 1 : (targetGridPosition.y < currentGridPosition.y) ? -1 : 0
             );
 
-            // Make sure the movement is only in cardinal directions
             if (direction.x != 0 && direction.y != 0)
             {
-                // Prefer horizontal movement if both directions are available
-                direction.y = 0; // Set vertical direction to 0
+                direction.y = 0;
             }
 
-            // Calculate the next position based on direction
-            Vector2Int nextPosition = currentGridPosition + direction;
+            Vector2Int nextPos = currentGridPosition + direction;
+            GameObject tile = gridManager.GetTileGameObjectAtPosition(nextPos);
 
-            // Check if the next tile is walkable
-            GameObject targetTile = gridManager.GetTileGameObjectAtPosition(nextPosition);
-            if (targetTile != null && targetTile.CompareTag("Tile") && unit.HasMovementPoints() && !IsPlayerOccupied(nextPosition))
+            if (tile != null && tile.CompareTag("Tile") && unit.HasMovementPoints() && !IsPlayerOccupied(nextPos))
             {
-                // Move the unit towards the nearest player
-                unit.MoveUnit(nextPosition); // Deduct movement points
+                unit.MoveUnit(nextPos);
                 transform.position = new Vector3(
-                    nextPosition.x * gridManager.UnityGridSize,
+                    nextPos.x * gridManager.UnityGridSize,
                     transform.position.y,
-                    nextPosition.y * gridManager.UnityGridSize
+                    nextPos.y * gridManager.UnityGridSize
                 );
-
-                Debug.Log($"Enemy moved towards player at: {nextPosition}");
             }
             else
             {
                 unit.currentMovementPoints = 0;
-                Debug.Log($"Next position {nextPosition} is not walkable or is occupied by a player unit, stopping movement.");
             }
-        }
-        else
-        {
-            Debug.Log("No player units found!");
         }
     }
 
@@ -124,19 +323,17 @@ public class EnemyAI : MonoBehaviour
         GameObject[] playerUnits = GameObject.FindGameObjectsWithTag("PlayerUnit");
         foreach (GameObject player in playerUnits)
         {
-            Vector2Int playerGridPosition = new Vector2Int(
+            Vector2Int playerGridPos = new Vector2Int(
                 Mathf.RoundToInt(player.transform.position.x / gridManager.UnityGridSize),
                 Mathf.RoundToInt(player.transform.position.z / gridManager.UnityGridSize)
             );
 
-            // Check if the player unit is occupying the position or any adjacent positions
-            if (playerGridPosition == position)
+            if (playerGridPos == position)
             {
-                Debug.Log("Player unit is occupying the position.");
-                return true; // Position is occupied by a player unit
+                return true;
             }
         }
-        return false; // Position is not occupied
+        return false;
     }
 
     private bool AttackNearestPlayerUnit()
@@ -145,7 +342,6 @@ public class EnemyAI : MonoBehaviour
         GameObject nearestPlayer = null;
         float shortestDistance = Mathf.Infinity;
 
-        // Find the nearest player unit
         foreach (GameObject player in playerUnits)
         {
             float distance = Vector3.Distance(transform.position, player.transform.position);
@@ -168,23 +364,21 @@ public class EnemyAI : MonoBehaviour
                 Mathf.RoundToInt(nearestPlayer.transform.position.z / gridManager.UnityGridSize)
             );
 
-            // Check for cardinal adjacency
-            int xDifference = Mathf.Abs(targetGridPosition.x - currentGridPosition.x);
-            int yDifference = Mathf.Abs(targetGridPosition.y - currentGridPosition.y);
+            int xDiff = Mathf.Abs(targetGridPosition.x - currentGridPosition.x);
+            int yDiff = Mathf.Abs(targetGridPosition.y - currentGridPosition.y);
 
-            // Attack if adjacent
-            if ((xDifference == 1 && yDifference == 0) || (xDifference == 0 && yDifference == 1))
+            if ((xDiff == 1 && yDiff == 0) || (xDiff == 0 && yDiff == 1))
             {
                 Unit playerUnit = nearestPlayer.GetComponent<Unit>();
                 if (playerUnit != null)
                 {
                     unit.Attack(playerUnit);
                     Debug.Log($"Enemy attacked {playerUnit.gameObject.name} for {unit.attackDamage} damage.");
-                    return true; // Indicate that an attack occurred
+                    return true;
                 }
             }
         }
 
-        return false; // No attack occurred
+        return false;
     }
 }

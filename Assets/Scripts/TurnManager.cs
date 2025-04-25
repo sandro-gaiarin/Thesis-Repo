@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -63,6 +63,22 @@ public class TurnManager : MonoBehaviour
         return true; // All player units are out of movement points
     }
 
+    private void RefreshEnemyUnits()
+    {
+        enemyUnits.Clear();
+
+        GameObject[] enemyUnitsGameObjects = GameObject.FindGameObjectsWithTag("EnemyUnit");
+        foreach (GameObject unitObj in enemyUnitsGameObjects)
+        {
+            Unit unit = unitObj.GetComponent<Unit>();
+            if (unit != null)
+            {
+                enemyUnits.Add(unit);
+            }
+        }
+    }
+
+
     public void EndPlayerTurn()
     {
         Debug.Log("Player turn has ended.");
@@ -75,12 +91,13 @@ public class TurnManager : MonoBehaviour
     {
         Debug.Log("Enemy turn has started.");
 
-        // Create a list of enemy AI coroutines to run
+        RefreshEnemyUnits(); // ✅ Add this here!
+
         List<Coroutine> enemyCoroutines = new List<Coroutine>();
 
         foreach (Unit enemy in enemyUnits)
         {
-            if (enemy != null)  // Check if the enemy unit is not destroyed
+            if (enemy != null)
             {
                 EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
                 if (enemyAI != null)
@@ -98,14 +115,14 @@ public class TurnManager : MonoBehaviour
             }
         }
 
-        // Wait for all enemy coroutines to finish
         foreach (Coroutine coroutine in enemyCoroutines)
         {
-            yield return coroutine; // This will yield until the coroutine is done
+            yield return coroutine;
         }
 
         EndEnemyTurn();
     }
+
 
 
     public void EndEnemyTurn()
