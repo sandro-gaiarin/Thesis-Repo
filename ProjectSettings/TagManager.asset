@@ -23,6 +23,7 @@ TagManager:
   - R3Trigger
   - WCTrigger
   - WCClose
+  - WarehouseDoor
   layers:
   - Default
   - TransparentFX

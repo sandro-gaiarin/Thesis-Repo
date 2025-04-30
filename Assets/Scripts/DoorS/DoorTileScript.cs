@@ -1,64 +1,77 @@
-/*using UnityEngine;
+using UnityEngine;
 
-public class DoorTileScript : MonoBehaviour
+public class DoorTile : MonoBehaviour
 {
-    [SerializeField] private float detectionDistance = 5f;  // Detection range
-    [SerializeField] private string requiredItemName = "KeyCard1";
+    public string requiredItemName = "KeyCard1"; // The name of the required item
+    public float interactionDistance = 3f;       // Distance to player to allow interaction
+    public float doorDestroyRadius = 5f;         // Radius to search for WarehouseDoor prefab
 
-    private GameObject[] players;
+    private GameObject player;
 
-    private void Update()
+    void Start()
     {
-        CheckDistanceToPlayers();
+        player = GameObject.FindGameObjectWithTag("PlayerUnit");
+
+        if (player == null)
+        {
+            Debug.LogError("Player with tag 'PlayerUnit' not found in the scene!");
+        }
     }
 
-    private void CheckDistanceToPlayers()
+    void Update()
     {
-        players = GameObject.FindGameObjectsWithTag("PlayerUnit");
+        if (player == null) return;
 
-        foreach (GameObject player in players)
+        float distance = Vector3.Distance(transform.position, player.transform.position);
+
+        if (distance <= interactionDistance && Input.GetKeyDown(KeyCode.F))
         {
-            float distance = Vector3.Distance(transform.position, player.transform.position);
+            TryUnlockDoor();
+        }
+    }
 
-            if (distance <= detectionDistance)
+    void TryUnlockDoor()
+    {
+        if (InventoryManager.Instance == null)
+        {
+            Debug.LogError("InventoryManager instance not found!");
+            return;
+        }
+
+        foreach (var item in InventoryManager.Instance.items)
+        {
+            if (item.itemData.itemName == requiredItemName && item.quantity > 0)
             {
-                TryUnlockDoor();
-                return;  // Stop checking if door is unlocked
+                Debug.Log("Correct keycard found! Unlocking door.");
+
+                // Unlock the tile
+                gameObject.tag = "Tile";
+
+                // Search for nearby WarehouseDoor and destroy it
+                DestroyNearbyWarehouseDoor();
+
+                return;
             }
         }
+
+        Debug.Log("Missing required item: " + requiredItemName);
     }
 
-    private void TryUnlockDoor()
+    void DestroyNearbyWarehouseDoor()
     {
-        InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
+        GameObject[] allDoors = GameObject.FindGameObjectsWithTag("WarehouseDoor");
 
-        if (inventoryManager != null && PlayerHasKeyCard(inventoryManager))
+        foreach (GameObject door in allDoors)
         {
-            //Debug.Log("KeyCard1 found! Door unlocked.");
-            gameObject.tag = "Walkable";
-        }
-        else
-        {
-            Debug.Log("Door locked. KeyCard1 required.");
-        }
-    }
-
-    private bool PlayerHasKeyCard(InventoryManager inventoryManager)
-    {
-        foreach (ItemSlot slot in inventoryManager.itemSlot)
-        {
-            if (slot.isFull && slot.itemName == requiredItemName)
+            float distance = Vector3.Distance(transform.position, door.transform.position);
+            if (distance <= doorDestroyRadius)
             {
-                return true;
+                Debug.Log("WarehouseDoor found and destroyed.");
+                Destroy(door);
+                //return; // Exit after destroying one (if you only want one removed)
             }
         }
-        return false;
-    }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, detectionDistance);
+        Debug.LogWarning("No WarehouseDoor found within range.");
     }
 }
-*/
