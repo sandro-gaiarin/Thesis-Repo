@@ -579,7 +579,7 @@ PrefabInstance:
       objectReference: {fileID: 101180, guid: a5b4dc18ac65b8d4aa58af9b95d65f77, type: 3}
     - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: displaySettings.inputSettings.responseTimeout
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: displaySettings.subtitleSettings.continueButton
@@ -770,7 +770,7 @@ MonoBehaviour:
   allowBarksDuringConversations: 0
   skipBarkIfNoValidEntries: 0
   cacheBarkLines: 0
-  conversation: Opening House 2
+  conversation: Office Exterior 2
   conversationConversant: {fileID: 1470249957}
   conversationActor: {fileID: 550243984}
   startConversationEntryID: -1
