@@ -8,6 +8,7 @@ public class CameraTriggers : MonoBehaviour
     // [SerializeField] private CinemachineVirtualCamera [] _cameraSettings;
     // [SerializeField] private int _whichCamera;
 
+
     [Header("Cameras")]
     public CinemachineVirtualCamera R1Camera;
     public CinemachineVirtualCamera R2Camera;
@@ -24,7 +25,9 @@ public class CameraTriggers : MonoBehaviour
 
     [Header("Walls")]
 
-    public Renderer Store3Walls;
+    // public Renderer Store3Walls;
+
+    public Renderer[] Store3WallObj;
     public Renderer WC1Walls;
     public Renderer WC2Walls;
 
@@ -34,6 +37,7 @@ public class CameraTriggers : MonoBehaviour
         if (other.CompareTag("H1Trigger"))
         {
             CameraManager.SwitchCamera(H1Camera);
+            Debug.Log("H1Trigger");
         }
         if (other.CompareTag("H2Trigger"))
         {
@@ -44,7 +48,12 @@ public class CameraTriggers : MonoBehaviour
         if (other.CompareTag("H3Trigger"))
         {
             CameraManager.SwitchCamera(H3Camera);
-            Store3Walls.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+
+            foreach (Renderer Store3Wall in Store3WallObj)
+            {
+                Store3Wall.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+            }
+            // Store3Walls.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
             WC1Walls.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
         }
         if (other.CompareTag("H4Trigger"))
@@ -62,7 +71,13 @@ public class CameraTriggers : MonoBehaviour
         if (other.CompareTag("Store3Trigger"))
         {
             CameraManager.SwitchCamera(Store3Camera);
-            Store3Walls.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
+            
+            foreach (Renderer Store3Wall in Store3WallObj)
+            {
+                Store3Wall.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
+            }
+
+            // Store3Walls.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
         }
         if (other.CompareTag("R1Trigger"))
         {
