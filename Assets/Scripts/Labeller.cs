@@ -27,7 +27,11 @@ public class Labeller : MonoBehaviour
 
     private void DisplayCords()
     {
-        if (!gridManager) { return; }
+        if (!gridManager) return;
+
+        // Exit early if the label has been intentionally removed or disabled
+        if (label == null) return;
+
         cords.x = Mathf.RoundToInt(transform.position.x / gridManager.UnityGridSize);
         cords.y = Mathf.RoundToInt(transform.position.z / gridManager.UnityGridSize);
 
