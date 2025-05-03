@@ -22,10 +22,12 @@ public class DoorTile : MonoBehaviour
     {
         if (player == null) return;
 
-        float distance = Vector3.Distance(transform.position, player.transform.position);
+        float distance = Vector3.Distance(GetColliderCenter(gameObject), GetColliderCenter(player));
+        Debug.Log($"Distance to door: {distance}");
 
         if (distance <= interactionDistance && Input.GetKeyDown(KeyCode.F))
         {
+            Debug.Log("Interacting with door tile.");
             TryUnlockDoor();
         }
     }
@@ -44,12 +46,8 @@ public class DoorTile : MonoBehaviour
             {
                 Debug.Log("Correct keycard found! Unlocking door.");
 
-                // Unlock the tile
-                gameObject.tag = "Tile";
-
-                // Search for nearby WarehouseDoor and destroy it
+                gameObject.tag = "Tile"; // Unlock the tile
                 DestroyNearbyWarehouseDoor();
-
                 return;
             }
         }
@@ -63,15 +61,20 @@ public class DoorTile : MonoBehaviour
 
         foreach (GameObject door in allDoors)
         {
-            float distance = Vector3.Distance(transform.position, door.transform.position);
+            float distance = Vector3.Distance(GetColliderCenter(gameObject), GetColliderCenter(door));
             if (distance <= doorDestroyRadius)
             {
                 Debug.Log("WarehouseDoor found and destroyed.");
                 Destroy(door);
-                //return; // Exit after destroying one (if you only want one removed)
             }
         }
 
         Debug.LogWarning("No WarehouseDoor found within range.");
+    }
+
+    Vector3 GetColliderCenter(GameObject obj)
+    {
+        Collider col = obj.GetComponentInChildren<Collider>();
+        return col != null ? col.bounds.center : obj.transform.position;
     }
 }

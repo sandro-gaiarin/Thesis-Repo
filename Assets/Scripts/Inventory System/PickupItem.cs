@@ -1,4 +1,5 @@
-using UnityEngine;
+﻿using UnityEngine;
+using PixelCrushers.DialogueSystem;
 
 public class PickupItem : MonoBehaviour
 {
@@ -10,12 +11,18 @@ public class PickupItem : MonoBehaviour
         {
             Debug.Log($"Player picked up: {itemData.itemName}");
 
-            InventoryManager inventory = GameObject.Find("InventoryManager").GetComponent<InventoryManager>();
+            InventoryManager inventory = GameObject.Find("InventoryManager")?.GetComponent<InventoryManager>();
             if (inventory != null)
             {
                 InventoryManager.Instance.AddItem(itemData, 1, itemData);
 
-                Destroy(gameObject); // Remove Memo 1 from the world
+                // ✅ Update document counters
+                if (itemData.itemType == ItemData.ItemType.Quest)
+                {
+                    GameManager.Instance?.AddDocument();
+                }
+
+                Destroy(gameObject);
             }
         }
     }

@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 using PixelCrushers.DialogueSystem;
 
 public class GameManager : MonoBehaviour
@@ -7,14 +6,17 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     private int totalDocumentCount = 0;
-    private int actOneDayOneDocumentCount = 0;
+    private int dayOneDocs = 0;
+    private int dayTwoDocs = 0;
+    private int dayThreeDocs = 0;
+    [SerializeField] private int currentDay = 1; // 1 = Day 1, 2 = Day 2, 3 = Day 3
 
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Optional: if you want it to persist across scenes
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -22,26 +24,37 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public int CurrentDay => currentDay; // Public getter
+
+    public void SetCurrentDay(int day)
+    {
+        currentDay = Mathf.Clamp(day, 1, 3);
+        Debug.Log($"Current game day set to: {currentDay}");
+    }
+
     public void AddDocument()
     {
         totalDocumentCount++;
-        Debug.Log($"Document picked up. Total: {totalDocumentCount}");
-    }
+        DialogueLua.SetVariable("Act1Variables.totalDocs", totalDocumentCount);
+        Debug.Log($"Total Documents: {totalDocumentCount}");
 
-    public int GetDocumentCount()
-    {
-        return totalDocumentCount;
-    }
-
-    // You can also add support for act/day-specific document tracking if needed:
-    public void AddDayOneDocument()
-    {
-        actOneDayOneDocumentCount++;
-        Debug.Log($"Day One Documents: {actOneDayOneDocumentCount}");
-    }
-
-    public int GetDayOneDocumentCount()
-    {
-        return actOneDayOneDocumentCount;
+        switch (currentDay)
+        {
+            case 1:
+                dayOneDocs++;
+                DialogueLua.SetVariable("Act1Variables.dayOneDocs", dayOneDocs);
+                Debug.Log($"Day 1 Docs: {dayOneDocs}");
+                break;
+            case 2:
+                dayTwoDocs++;
+                DialogueLua.SetVariable("Act1Variables.dayTwoDocs", dayTwoDocs);
+                Debug.Log($"Day 2 Docs: {dayTwoDocs}");
+                break;
+            case 3:
+                dayThreeDocs++;
+                DialogueLua.SetVariable("Act1Variables.dayThreeDocs", dayThreeDocs);
+                Debug.Log($"Day 3 Docs: {dayThreeDocs}");
+                break;
+        }
     }
 }
