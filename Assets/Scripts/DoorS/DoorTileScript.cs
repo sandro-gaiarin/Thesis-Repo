@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DoorTile : MonoBehaviour
 {
@@ -20,10 +20,16 @@ public class DoorTile : MonoBehaviour
 
     void Update()
     {
-        if (player == null) return;
+        GameObject closestPlayer = FindClosestPlayerUnit();
+        if (closestPlayer == null) return;
 
-        float distance = Vector3.Distance(GetColliderCenter(gameObject), GetColliderCenter(player));
-        Debug.Log($"Distance to door: {distance}");
+        Vector3 doorPoint = GetClosestEdge(gameObject, closestPlayer);
+        Vector3 playerPoint = GetClosestEdge(closestPlayer, gameObject);
+
+        float distance = Vector3.Distance(doorPoint, playerPoint);
+        Debug.Log($"Distance to closest player: {distance}");
+
+        Debug.DrawLine(playerPoint, doorPoint, Color.blue);
 
         if (distance <= interactionDistance && Input.GetKeyDown(KeyCode.F))
         {
@@ -31,6 +37,27 @@ public class DoorTile : MonoBehaviour
             TryUnlockDoor();
         }
     }
+
+    GameObject FindClosestPlayerUnit()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("PlayerUnit");
+        GameObject closest = null;
+        float minDistance = Mathf.Infinity;
+
+        foreach (GameObject p in players)
+        {
+            float dist = Vector3.Distance(p.transform.position, transform.position);
+            if (dist < minDistance)
+            {
+                minDistance = dist;
+                closest = p;
+            }
+        }
+
+        return closest;
+    }
+
+
 
     void TryUnlockDoor()
     {
@@ -45,7 +72,6 @@ public class DoorTile : MonoBehaviour
             if (item.itemData.itemName == requiredItemName && item.quantity > 0)
             {
                 Debug.Log("Correct keycard found! Unlocking door.");
-
                 gameObject.tag = "Tile"; // Unlock the tile
                 DestroyNearbyWarehouseDoor();
                 return;
@@ -61,7 +87,11 @@ public class DoorTile : MonoBehaviour
 
         foreach (GameObject door in allDoors)
         {
-            float distance = Vector3.Distance(GetColliderCenter(gameObject), GetColliderCenter(door));
+            float distance = Vector3.Distance(
+                GetClosestEdge(gameObject, door),
+                GetClosestEdge(door, gameObject)
+            );
+
             if (distance <= doorDestroyRadius)
             {
                 Debug.Log("WarehouseDoor found and destroyed.");
@@ -72,9 +102,15 @@ public class DoorTile : MonoBehaviour
         Debug.LogWarning("No WarehouseDoor found within range.");
     }
 
-    Vector3 GetColliderCenter(GameObject obj)
+    Vector3 GetClosestEdge(GameObject source, GameObject target)
     {
-        Collider col = obj.GetComponentInChildren<Collider>();
-        return col != null ? col.bounds.center : obj.transform.position;
+        Collider sourceCollider = source.GetComponentInChildren<Collider>();
+        if (sourceCollider != null)
+        {
+            return sourceCollider.ClosestPoint(target.transform.position);
+        }
+        return source.transform.position;
     }
+
+
 }

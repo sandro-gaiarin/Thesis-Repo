@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
+
+    public static GridManager Instance { get; private set; }
+
     [SerializeField] Vector2Int gridSize;
     [SerializeField] int unityGridSize;
     public int UnityGridSize { get { return unityGridSize; } }
@@ -13,6 +16,16 @@ public class GridManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         for (int x = 0; x < gridSize.x; x++)
         {
             for (int y = 0; y < gridSize.y; y++)
@@ -22,6 +35,7 @@ public class GridManager : MonoBehaviour
             }
         }
     }
+
 
     public Node GetNodeAtPosition(Vector2Int gridPosition)
     {
