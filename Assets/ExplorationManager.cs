@@ -24,6 +24,20 @@ public class ExplorationManager : MonoBehaviour
         {
             Debug.LogError("CombatManager not found in the scene!");
         }
+
+
+    }
+
+    void Start()
+    {
+        if (combatManager != null)
+        {
+            combatManager.SetActive(false); // Ensure Combat Manager is inactive at the start
+        }
+        else
+        {
+            Debug.LogError("CombatManager not found in the scene!");
+        }
     }
 
     void OnEnable()

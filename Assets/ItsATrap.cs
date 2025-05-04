@@ -22,7 +22,7 @@ public class ItsATrap : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Combat Manager GameObject not found!");
+            combatManagerScript.TriggerCombat();
         }
     }
 

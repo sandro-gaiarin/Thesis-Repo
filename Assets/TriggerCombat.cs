@@ -4,13 +4,32 @@ using UnityEngine;
 
 public class TriggerCombat : MonoBehaviour
 {
+    public static TriggerCombat Instance { get; private set; }
+
     public GameObject CombatManagerParent;
     public GameObject ExplorationManager;
     // Start is called before the first frame update
-    void Start()
+
+    void Awake()
     {
+        // Singleton setup
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Optional: Remove if you don’t want persistence between scenes
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         CombatManagerParent = GameObject.Find("Combat Manager");
         ExplorationManager = GameObject.Find("Exploration Manager");
+    }
+    void Start()
+    {
+        
     }
 
     public void TriggerCombatStart()

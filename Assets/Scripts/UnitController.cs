@@ -241,7 +241,7 @@ public class UnitController : MonoBehaviour
         Debug.Log($"Total highlighted tiles: {highlightedTiles.Count}");
     }
 
-    void ClearHighlightedTiles()
+    public void ClearHighlightedTiles()
     {
         foreach (GameObject tile in highlightedTiles)
         {
@@ -311,7 +311,7 @@ public class UnitController : MonoBehaviour
         Debug.Log($"Total attack range tiles highlighted: {attackHighlightedTiles.Count}");
     }
 
-    void ClearAttackHighlightedTiles()
+    public void ClearAttackHighlightedTiles()
     {
         foreach (GameObject tile in attackHighlightedTiles)
         {

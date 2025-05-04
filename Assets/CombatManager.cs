@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 using System.Collections; // <-- Needed for IEnumerator
 
@@ -16,6 +16,14 @@ public class CombatManager : MonoBehaviour
     {
         // Find ExplorationManager, even if inactive
         explorationManager = FindObjectOfType<ExplorationManager>(true);
+        if (explorationManager != null)
+        {
+            explorationUnitController = explorationManager.GetComponentInChildren<ExplorationUnitController>();
+        }
+        else
+        {
+            Debug.LogError("ExplorationManager not found in the scene!");
+        }
 
         if (explorationManager == null)
         {
@@ -60,7 +68,7 @@ public class CombatManager : MonoBehaviour
             OnCombatEnded?.Invoke();
 
             DisableCombatMode();
-            if (explorationManager) explorationManager.EnableExplorationMode();
+            //if (explorationManager) explorationManager.EnableExplorationMode();
         }
     }
 
@@ -82,9 +90,17 @@ public class CombatManager : MonoBehaviour
 
     void DisableCombatMode()
     {
-        foreach (Transform child in transform)
+        // ✅ Clear highlights from combat
+        UnitController unitController = GetComponentInChildren<UnitController>();
+        if (unitController != null)
         {
-            child.gameObject.SetActive(false);
+            unitController.ClearHighlightedTiles();
+            unitController.ClearAttackHighlightedTiles(); 
+
+        }
+        else
+        {
+            Debug.LogWarning("UnitController not found in CombatManager's children.");
         }
 
         if (explorationManager)
@@ -95,7 +111,7 @@ public class CombatManager : MonoBehaviour
                 child.gameObject.SetActive(true);
             }
 
-            ExplorationUnitController explorationUnitController = explorationManager.GetComponent<ExplorationUnitController>();
+            ExplorationUnitController explorationUnitController = explorationManager.GetComponentInChildren<ExplorationUnitController>();
             if (explorationUnitController != null)
             {
                 GameObject hacker = GameObject.Find("Hacker");
@@ -111,10 +127,21 @@ public class CombatManager : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("ExplorationUnitController not found on ExplorationManager.");
+                Debug.LogWarning("ExplorationUnitController not found in ExplorationManager's children.");
             }
         }
+
+        // ✅ Disable combat UI/logic
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+
+        // ✅ Enable exploration mode
+        
     }
+
+
 
 
     public void RequestCombatEnd()
