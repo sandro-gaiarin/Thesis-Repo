@@ -50,12 +50,21 @@ public class ExplorationManager : MonoBehaviour
                 child.gameObject.SetActive(true);
             }
         }
+
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(false); 
+        }
     }
 
     public void EnableExplorationMode()
     {
         Debug.Log("Exploration Mode Enabled!");
-        gameObject.SetActive(true); 
+        //gameObject.SetActive(true); 
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(true); 
+        }
 
         if (combatManager)
         {

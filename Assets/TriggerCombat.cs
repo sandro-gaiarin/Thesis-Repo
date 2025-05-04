@@ -9,7 +9,7 @@ public class TriggerCombat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CombatManagerParent = GameObject.Find("Combat Manager Parent");
+        CombatManagerParent = GameObject.Find("Combat Manager");
         ExplorationManager = GameObject.Find("Exploration Manager");
     }
 

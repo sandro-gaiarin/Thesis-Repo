@@ -9023,6 +9023,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1405689741}
   m_CullTransparentMesh: 1
+--- !u!1 &1420906335 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8905801993850858487, guid: e4aeafb6f664ab2478f98fbcc70da83a, type: 3}
+  m_PrefabInstance: {fileID: 633403669494165427}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1420906337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420906335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a78efeada1033d4e8c879e8ea32c45a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredItemName: KeyCard1
+  interactionDistance: 0.5
+  doorDestroyRadius: 5
 --- !u!1 &1428046074
 GameObject:
   m_ObjectHideFlags: 0
@@ -13898,7 +13918,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8905801993850858487, guid: e4aeafb6f664ab2478f98fbcc70da83a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1420906337}
   m_SourcePrefab: {fileID: 100100000, guid: e4aeafb6f664ab2478f98fbcc70da83a, type: 3}
 --- !u!23 &1045316070421344127 stripped
 MeshRenderer:

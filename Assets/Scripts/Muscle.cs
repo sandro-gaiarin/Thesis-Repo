@@ -20,5 +20,6 @@ public class Muscle : Unit
     {
         Debug.Log("Rolling for damage...");
         this.attackDamage = Random.Range(1, 10);
+        TooltipUI.ShowMessage("Quinn dealt" + this.attackDamage + "damage!");
     }
 }

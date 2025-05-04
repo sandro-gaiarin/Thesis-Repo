@@ -29,5 +29,6 @@ public class Hacker : Unit
     {
         Debug.Log("Rolling for damage...");
         this.attackDamage = Random.Range(1, 6);
+        TooltipUI.ShowMessage("Quinn dealt" + this.attackDamage + "damage!");
     }
 }

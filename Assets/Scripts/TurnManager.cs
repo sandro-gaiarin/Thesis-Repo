@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TurnManager : MonoBehaviour
 {
@@ -10,11 +11,14 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private List<Unit> playerUnits; // Reference to player units
     [SerializeField] private List<Unit> enemyUnits;  // Reference to enemy units
     [SerializeField] public int roundCounter = 20;
+    [SerializeField] private TMP_Text roundCounterText;
+    private CombatManager combatManager;
+
 
     void Start()
     {
         playerUnits = new List<Unit>();
-
+        UpdateRoundUI();
         GameObject[] playerUnitsGameObjects = GameObject.FindGameObjectsWithTag("PlayerUnit");
         foreach (GameObject unitObj in playerUnitsGameObjects)
         {
@@ -24,6 +28,13 @@ public class TurnManager : MonoBehaviour
                 playerUnits.Add(unit);
             }
         }
+
+        combatManager = FindObjectOfType<CombatManager>();
+        if (combatManager == null)
+        {
+            Debug.LogError("CombatManager not found!");
+        }
+
 
         enemyUnits = new List<Unit>();
 
@@ -130,7 +141,22 @@ public class TurnManager : MonoBehaviour
         Debug.Log("Enemy turn has ended.");
 
         roundCounter--;
-        Debug.Log($"Round {10 - roundCounter} has ended. {roundCounter} rounds left.");
+        Debug.Log($"Round {20 - roundCounter} has ended. {roundCounter} rounds left.");
+
+        UpdateRoundUI();
+
+        // ✅ End combat if no enemy units are left
+        enemyUnits.RemoveAll(unit => unit == null); // Clean up destroyed units
+        if (enemyUnits.Count == 0)
+        {
+            Debug.Log("No enemies remaining. Ending combat.");
+            if (combatManager != null)
+            {
+                combatManager.RequestCombatEnd();
+
+            }
+            return;
+        }
 
         if (roundCounter <= 0)
         {
@@ -138,13 +164,24 @@ public class TurnManager : MonoBehaviour
             return;
         }
 
+        currentState = TurnState.PlayerTurn;
+        ResetPlayerUnits();
+        StartPlayerTurn();
+    }
+
+
+    private void UpdateRoundUI()
+    {
+        if (roundCounterText != null)
+        {
+            roundCounterText.text = $"Rounds Remaining: {roundCounter}";
+        }
         else
         {
-            currentState = TurnState.PlayerTurn;
-            ResetPlayerUnits();
-            StartPlayerTurn();
+            Debug.LogWarning("RoundCounterText is not assigned in the Inspector.");
         }
     }
+
 
     private void StartPlayerTurn()
     {

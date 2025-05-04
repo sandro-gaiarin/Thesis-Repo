@@ -27,7 +27,7 @@ public class DoorTile : MonoBehaviour
         Vector3 playerPoint = GetClosestEdge(closestPlayer, gameObject);
 
         float distance = Vector3.Distance(doorPoint, playerPoint);
-        Debug.Log($"Distance to closest player: {distance}");
+        //Debug.Log($"Distance to closest player: {distance}");
 
         Debug.DrawLine(playerPoint, doorPoint, Color.blue);
 
