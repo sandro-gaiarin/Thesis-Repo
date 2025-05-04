@@ -770,7 +770,7 @@ MonoBehaviour:
   allowBarksDuringConversations: 0
   skipBarkIfNoValidEntries: 0
   cacheBarkLines: 0
-  conversation: Office Exterior 2
+  conversation: Act 2 Closing
   conversationConversant: {fileID: 1470249957}
   conversationActor: {fileID: 550243984}
   startConversationEntryID: -1
