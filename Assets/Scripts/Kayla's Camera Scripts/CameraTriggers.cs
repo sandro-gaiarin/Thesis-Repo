@@ -45,36 +45,52 @@ public class CameraTriggers : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        R1Camera = FindCamera("R1 Cam");
+        R2Camera = FindCamera("R2 Cam");
+        R3Camera = FindCamera("R3 Cam");
+        H1Camera = FindCamera("H1 Cam");
+        H2Camera = FindCamera("H2 Cam");
+        H3Camera = FindCamera("H3 Cam");
+        H4Camera = FindCamera("H4 Cam");
+        Store1Camera = FindCamera("Store 1 Cam");
+        Store2Camera = FindCamera("Store 2 Cam");
+        Store3Camera = FindCamera("Store 3 Cam");
+        WCCamera = FindCamera("WC Cam");
 
-        R1Camera = GameObject.Find("R1 Cam").GetComponent<CinemachineVirtualCamera>();
-        R2Camera = GameObject.Find("R2 Cam").GetComponent<CinemachineVirtualCamera>();
-        R3Camera = GameObject.Find("R3 Cam").GetComponent<CinemachineVirtualCamera>();
-        H1Camera = GameObject.Find("H1 Cam").GetComponent<CinemachineVirtualCamera>();
-        H2Camera = GameObject.Find("H2 Cam").GetComponent<CinemachineVirtualCamera>();
-        H3Camera = GameObject.Find("H3 Cam").GetComponent<CinemachineVirtualCamera>();
-        H4Camera = GameObject.Find("H4 Cam").GetComponent<CinemachineVirtualCamera>();
-        Store1Camera = GameObject.Find("Store 1 Cam").GetComponent<CinemachineVirtualCamera>();
-        Store2Camera = GameObject.Find("Store 2 Cam").GetComponent<CinemachineVirtualCamera>();
-        Store3Camera = GameObject.Find("Store 3 Cam").GetComponent<CinemachineVirtualCamera>();
-        WCCamera = GameObject.Find("WC Cam").GetComponent<CinemachineVirtualCamera>();
-
-        // Store3WallObj = Store3Array[] {
-        //     GameObject.Find("Store 3 Walls").GetComponent<Renderer>(),
-        //     GameObject.Find("Store3 SM1").GetComponent<Renderer>(),
-        //     GameObject.Find("Store3 SM2").GetComponent<Renderer>(),
-        //     GameObject.Find("Store3 SM3").GetComponent<Renderer>(),
-        // };
-
-        Store3WallObj = new Renderer[] {
-            GameObject.Find("Store 3 Walls").GetComponent<Renderer>(),
-            GameObject.Find("Store3 SM1").GetComponent<Renderer>(),
-            GameObject.Find("Store3 SM2").GetComponent<Renderer>(),
-            GameObject.Find("Store3 SM3").GetComponent<Renderer>()
+        Store3WallObj = new Renderer[]
+        {
+        FindRenderer("Store 3 Walls"),
+        FindRenderer("Store3 SM1"),
+        FindRenderer("Store3 SM2"),
+        FindRenderer("Store3 SM3")
         };
 
-        WC1Walls = GameObject.Find("WC Walls 1").GetComponent<Renderer>();
-        WC2Walls = GameObject.Find("WC Walls 2").GetComponent<Renderer>();
+        WC1Walls = FindRenderer("WC Walls 1");
+        WC2Walls = FindRenderer("WC Walls 2");
     }
+
+    private CinemachineVirtualCamera FindCamera(string name)
+    {
+        GameObject obj = GameObject.Find(name);
+        if (obj == null)
+        {
+            Debug.LogWarning($"Camera GameObject '{name}' not found in scene.");
+            return null;
+        }
+        return obj.GetComponent<CinemachineVirtualCamera>();
+    }
+
+    private Renderer FindRenderer(string name)
+    {
+        GameObject obj = GameObject.Find(name);
+        if (obj == null)
+        {
+            Debug.LogWarning($"Renderer GameObject '{name}' not found in scene.");
+            return null;
+        }
+        return obj.GetComponent<Renderer>();
+    }
+
 
 
     private void OnTriggerEnter(Collider other)

@@ -4,9 +4,9 @@ using UnityEngine.UI;
 using System.Collections;
 using PixelCrushers.DialogueSystem;
 
-public class SceneManager : MonoBehaviour
+public class MySceneManager : MonoBehaviour
 {
-    public static SceneManager Instance;
+    public static MySceneManager Instance;
     public Image fadeImage; // Assign this in the Inspector
     public float fadeDuration = 1f; // Duration of the fade
 

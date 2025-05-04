@@ -6,12 +6,12 @@ public class CountdownTimer : MonoBehaviour
     public TMP_Text timerText; // Reference to the UI Text
     public float timeRemaining = 30f; // 30 seconds countdown
     private bool timerIsActive = false;
-    public SceneManager sceneManager;
+    //public SceneManager sceneManager;
 
     void Start()
     {
         timerText.text = "30"; // Initialize the UI text
-        sceneManager = GameObject.Find("SceneManager").GetComponent<SceneManager>();
+        //sceneManager = GameObject.Find("SceneManager").GetComponent<SceneManager>();
     }
 
     void Update()
@@ -25,7 +25,7 @@ public class CountdownTimer : MonoBehaviour
         {
             timeRemaining = 0;
             timerText.text = "0"; // Ensure it shows 0 when done
-            sceneManager.FadeAndLoadScene("PlayerRoomA1S3");
+            //sceneManager.FadeAndLoadScene("PlayerRoomA1S3");
 
             timerIsActive = false;
             Debug.Log(" Timer Ended!");
