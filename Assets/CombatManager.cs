@@ -63,6 +63,8 @@ public class CombatManager : MonoBehaviour
     {
         if (combatActive)
         {
+           
+            explorationUnitController.selectedUnit = GameObject.Find("Hacker"); // Set the selected unit to Hacker
             Debug.Log("Combat Ended!");
             combatActive = false;
             OnCombatEnded?.Invoke();
