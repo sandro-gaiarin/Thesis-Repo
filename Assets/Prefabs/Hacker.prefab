@@ -165,6 +165,9 @@ MonoBehaviour:
   target: {fileID: 0}
   unitController: {fileID: 0}
   numberOfActions: 1
+  unitName: 
+  maxHealth: 100
+  _healthBar: {fileID: 0}
 --- !u!54 &6301468326448510957
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -227,6 +230,11 @@ MonoBehaviour:
   Store2Camera: {fileID: 0}
   Store3Camera: {fileID: 0}
   WCCamera: {fileID: 0}
+  Store3WallObj:
+  - {fileID: 0}
+  - {fileID: 0}
+  WC1Walls: {fileID: 0}
+  WC2Walls: {fileID: 0}
 --- !u!1 &2423619664853196869
 GameObject:
   m_ObjectHideFlags: 0
