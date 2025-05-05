@@ -37,7 +37,7 @@ public class InventoryManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+       /* if (Input.GetKeyDown(KeyCode.I))
         {
             menuActivated = !menuActivated;
             if (inventoryCanvas != null)
@@ -46,7 +46,7 @@ public class InventoryManager : MonoBehaviour
             }
             InventoryUI.Instance?.ToggleInventory(); // ✅ Correct
 
-        }
+        }*/
     }
 
 

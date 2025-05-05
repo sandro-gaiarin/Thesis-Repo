@@ -3,7 +3,23 @@ using UnityEngine.SceneManagement;
 
 public class LeaveWarehouse : MonoBehaviour
 {
+    public static LeaveWarehouse Instance { get; private set; }
+
     public GameObject leaveWarehouseCanvas; // Assign in inspector
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            // Optional: Uncomment if you want it to persist between scenes
+            // DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -29,7 +45,6 @@ public class LeaveWarehouse : MonoBehaviour
         }
     }
 
-    // Call this when the player confirms they want to leave
     public void LeaveBasedOnDay()
     {
         int currentDay = GameManager.Instance.currentDay;
@@ -51,7 +66,6 @@ public class LeaveWarehouse : MonoBehaviour
         }
     }
 
-    // Optional cancel function
     public void DontLeave()
     {
         if (leaveWarehouseCanvas != null)

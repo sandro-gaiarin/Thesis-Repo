@@ -37,7 +37,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    private void Die()
+    public virtual void Die()
     {
         Debug.Log($"{gameObject.name} died.");
         Destroy(gameObject);

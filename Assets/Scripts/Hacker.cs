@@ -25,6 +25,19 @@ public class Hacker : Unit
         
     }
 
+    public override void Die()
+    {
+        Debug.Log("Hacker has died!");
+        TooltipUI.ShowMessage("Quinn has taken too much damage! You have to flee!");
+        StartCoroutine(LeaveAfterDelay(5f));
+    }
+
+    private IEnumerator LeaveAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        LeaveWarehouse.Instance.LeaveBasedOnDay();
+    }
+
     public override void DamageRoll()
     {
         Debug.Log("Rolling for damage...");

@@ -8,7 +8,7 @@ public class TooltipUI : MonoBehaviour
 
     [SerializeField] private GameObject tooltipPanel;
     [SerializeField] private TMP_Text tooltipText;
-    [SerializeField] private float displayDuration = 3f;
+    [SerializeField] public float displayDuration = 3f;
 
     private Coroutine hideCoroutine;
 

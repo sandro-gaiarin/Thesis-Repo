@@ -23,6 +23,9 @@ public class UnitController : MonoBehaviour
 
     public Material attackHighlightMaterial;
     private List<GameObject> attackHighlightedTiles = new List<GameObject>();
+    [SerializeField] private GameObject consumablesPanel; // Panel that holds all consumables
+    [SerializeField] private Transform buttonContainer; // Where buttons go inside the panel
+    [SerializeField] private GameObject consumableButtonPrefab; // The prefab we made
 
 
     void Start()
@@ -323,5 +326,28 @@ public class UnitController : MonoBehaviour
         }
         attackHighlightedTiles.Clear();
     }
+
+    public void OpenConsumablesPanel()
+    {
+        InventoryUI.Instance.ShowConsumables(UseConsumableOnSelectedUnit);
+    }
+
+    private void UseConsumableOnSelectedUnit(NewInventoryItem item)
+    {
+        if (selectedUnit == null) return;
+
+        Unit unitComponent = selectedUnit.GetComponent<Unit>();
+        if (unitComponent == null) return;
+
+        if (item.itemData.itemName == "First Aid Kit")
+        {
+            unitComponent.health += item.itemData.healAmount;
+            if (unitComponent.health > 100) unitComponent.health = 100;
+
+            InventoryManager.Instance.RemoveItem(item.itemData, 1);
+            TooltipUI.ShowMessage($"{item.itemData.itemName} used! {selectedUnit.name} healed for {item.itemData.healAmount} HP.");
+        }
+    }
+
 
 }

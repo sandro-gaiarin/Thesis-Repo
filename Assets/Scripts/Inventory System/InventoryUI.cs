@@ -72,11 +72,14 @@ public class InventoryUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             Debug.Log("I key pressed!");
+
+            //inventory = InventoryManager.Instance; // ✅ Moved here BEFORE ToggleInventory()
+
             ToggleInventory();
             RefreshUI();
-            inventory = InventoryManager.Instance;
         }
     }
+
 
     public void ToggleInventory()
     {
@@ -197,4 +200,38 @@ public class InventoryUI : MonoBehaviour
 
         itemDetailsPanel.SetActive(true);
     }
+
+    public GameObject consumableSlotPrefab;
+    public Transform consumableContainer;
+    public GameObject consumablePanel;
+
+    public void ShowConsumables(System.Action<NewInventoryItem> onItemUsed)
+    {
+        foreach (Transform child in consumableContainer)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (var item in inventory.items)
+        {
+            if (item.itemData.itemType == ItemData.ItemType.Consumable)
+            {
+                GameObject slot = Instantiate(consumableSlotPrefab, consumableContainer);
+                slot.GetComponentInChildren<TMP_Text>().text = item.itemData.itemName;
+
+                Button button = slot.GetComponent<Button>();
+                if (button != null)
+                {
+                    button.onClick.AddListener(() =>
+                    {
+                        onItemUsed?.Invoke(item);
+                        consumablePanel.SetActive(false); // Close after use
+                    });
+                }
+            }
+        }
+
+        consumablePanel.SetActive(true);
+    }
+
 }
