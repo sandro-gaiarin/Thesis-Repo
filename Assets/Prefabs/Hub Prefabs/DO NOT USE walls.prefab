@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5466257216081019337}
   m_Layer: 0
-  m_Name: Walls
+  m_Name: DO NOT USE walls
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
