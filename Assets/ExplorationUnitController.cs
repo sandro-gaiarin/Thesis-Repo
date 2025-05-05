@@ -17,9 +17,13 @@ public class ExplorationUnitController : MonoBehaviour
         
     }
 
+
+
     
     void Update()
     {
+        gridManager = FindObjectOfType<GridManager>();
+        selectedUnit = GameObject.Find("Hacker");
         HandleKeyboardInput();
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -47,45 +51,7 @@ public class ExplorationUnitController : MonoBehaviour
         }
     }
 
-    /*void HandleKeyboardInput()
-        {
-            if (selectedUnit != null)
-            {
-                if (unitSelected)
-                {
 
-
-                    bool moved = false;
-                    Vector2Int targetGridPosition = new Vector2Int(
-                        Mathf.RoundToInt(selectedUnit.transform.position.x / gridManager.UnityGridSize),
-                        Mathf.RoundToInt(selectedUnit.transform.position.z / gridManager.UnityGridSize)
-                    );
-
-                    //selectedUnitCurrentMovementPoints = selectedUnit.GetComponent<Unit>().currentMovementPoints;
-                   // if (selectedUnitCurrentMovementPoints <= 0) return;
-
-                    if (Input.GetKeyDown(KeyCode.W)) { targetGridPosition += new Vector2Int(0, 1); moved = true; }
-                    else if (Input.GetKeyDown(KeyCode.S)) { targetGridPosition += new Vector2Int(0, -1); moved = true; }
-                    else if (Input.GetKeyDown(KeyCode.A)) { targetGridPosition += new Vector2Int(-1, 0); moved = true; }
-                    else if (Input.GetKeyDown(KeyCode.D)) { targetGridPosition += new Vector2Int(1, 0); moved = true; }
-
-                    if (moved)
-                    {
-                        GameObject targetTile = gridManager.GetTileGameObjectAtPosition(targetGridPosition);
-                        if (targetTile != null && !targetTile.CompareTag("Unwalkable"))
-                        {
-                            selectedUnit.transform.position = new Vector3(
-                                targetGridPosition.x * gridManager.UnityGridSize,
-                                selectedUnit.transform.position.y,
-                                targetGridPosition.y * gridManager.UnityGridSize
-                            );
-                            //selectedUnit.GetComponent<Unit>().currentMovementPoints--;
-                            Debug.Log($"Unit moved to: {targetGridPosition}, Remaining movement points: {selectedUnit.GetComponent<Unit>().currentMovementPoints}");
-                        }
-                    }
-                }
-            }
-        }*/
 
     void HandleKeyboardInput()
     {

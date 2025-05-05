@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/PlayerRoomA1S1.unity
     guid: 13c16e5b95910af4db6a0484df68c17e
   - enabled: 1
-    path: Assets/Scenes/WH Main.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
     path: Assets/Scenes/PlayerRoomA1S1TEST.unity
     guid: 8385d72f2139e9745a10587b60162fcf
   - enabled: 1
@@ -21,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/outsideWarehouse.unity
     guid: 1c5206684118b2e43b77d5b41757afc3
   - enabled: 1
+    path: Assets/Scenes/WH Main.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
     path: Assets/Scenes/PlayerRoomA1S3.unity
     guid: 5bd12f4f3c0918144b765e004a25dedc
   - enabled: 1
@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WH Main 2.unity
     guid: e4120d65fd56fbc4faf8f735abd66533
+  - enabled: 1
+    path: Assets/Scenes/PlayerRoomHUB.unity
+    guid: df8110f5f94174f4995460d82693ae38
   m_configObjects: {}

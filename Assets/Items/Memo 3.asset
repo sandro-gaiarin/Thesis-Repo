@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9033fb496f9b4de408327384012c163d, type: 3}
   m_Name: Memo 3
   m_EditorClassIdentifier: 
-  itemName: Memo 3
+  itemName: NOTICE
   icon: {fileID: 0}
-  description: "INVENTORY: 2 dozen desktop computers, and accompanying monitors 4
-    heavy-duty printers 1 phone bank, with 10 phones 1 magic suppression field generator
-    (prototype) 2 dozen desks, and accompanying chairs 2 water coolers 1 Mark 3 Calcutron
-    Construct NOTES: Security personnel\u2019s equipment is logged separately. Now
-    that we\u2019re closing up shop, we need to make sure that everything here is
-    packed away and secured. And, importantly, please exercise EXTREME CAUTION while
-    handling the Calcutron Construct. Security has modified it to serve in a combat
-    capacity, and we don\u2019t want it accidentally activating. "
+  description: "A reminder that any work you conduct for the Echelon Institute is
+    to be treated with the utmost secrecy- especially those modifying our Calcutron
+    Construct. The work we do is too valuable to have accidentally leaked to the
+    press. If anyone inquires about what you do, please reply with the standard \u201CI
+    work for a think tank.\u201D This is technically the truth, if you have any compunctions
+    about lying. If you believe any of your coworkers may be attempting to expose
+    our operations to public scrutiny, please alert your superiors at once. Remember
+    that you are working towards a better future."
   price: 0
-  itemType: 0
+  itemType: 3
   maxStack: 1

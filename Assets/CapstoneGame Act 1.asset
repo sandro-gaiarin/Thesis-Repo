@@ -631,7 +631,7 @@ MonoBehaviour:
       type: 0
       typeString: 
     - title: Initial Value
-      value: 0
+      value: 2
       type: 1
       typeString: CustomFieldType_Number
     - title: Description
@@ -7005,7 +7005,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 80
-        y: 553.02435
+        y: 554
         width: 160
         height: 30
     entryGroups: []
@@ -14729,7 +14729,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: LoadLevel(PlayerRoomHUB)
         type: 0
         typeString: CustomFieldType_Text
       - title: Articy Id
@@ -14749,7 +14749,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
@@ -16814,7 +16814,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: LoadLevel(PlayerRoomHUB)
         type: 0
         typeString: CustomFieldType_Text
       - title: Articy Id
@@ -16834,7 +16834,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
@@ -18898,7 +18898,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: LoadLevel(PlayerRoomHUB)
         type: 0
         typeString: CustomFieldType_Text
       - title: Articy Id
@@ -18918,7 +18918,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
@@ -18933,8 +18933,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 0.7000003
+    canvasScrollPosition: {x: 0, y: 1746.0916}
+    canvasZoom: 1.1300004
   - id: 8
     fields:
     - title: Title

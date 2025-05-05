@@ -1,35 +1,39 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TutorialDoorTile : MonoBehaviour
 {
-    public string requiredItemName = "KeyCard1"; // The name of the required item
-    public float interactionDistance = .5f;       // Distance to player to allow interaction
-    public float doorDestroyRadius = 5f;         // Radius to search for WarehouseDoor prefab
+    public string requiredItemName;  // The name of the required item
+    public float interactionDistance = 0.5f;      // Distance to player to allow interaction
+    public float doorDestroyRadius = 0.5f;        // Radius to search for WarehouseDoor prefab
 
-    private GameObject player;
+    private GameObject hacker;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("PlayerUnit");
+        
 
-        if (player == null)
+        if (hacker == null)
         {
-            Debug.LogError("Player with tag 'PlayerUnit' not found in the scene!");
+            Debug.LogError("GameObject named 'Hacker' not found in the scene!");
         }
     }
 
     void Update()
     {
-        GameObject closestPlayer = FindClosestPlayerUnit();
-        if (closestPlayer == null) return;
+        hacker = GameObject.Find("Hacker");
+        if (hacker == null) return;
 
-        Vector3 doorPoint = GetClosestEdge(gameObject, closestPlayer);
-        Vector3 playerPoint = GetClosestEdge(closestPlayer, gameObject);
+        // Only the closest tile to Hacker is allowed to interact
+        if (!IsThisTheClosestTileTo(hacker)) return;
 
-        float distance = Vector3.Distance(doorPoint, playerPoint);
-        Debug.Log($"Distance to closest player: {distance}");
+        Vector3 doorPoint = GetClosestEdge(gameObject, hacker);
+        Vector3 hackerPoint = GetClosestEdge(hacker, gameObject);
 
-        Debug.DrawLine(playerPoint, doorPoint, Color.blue);
+        float distance = Vector3.Distance(doorPoint, hackerPoint);
+        Debug.Log($"Distance to Hacker: {distance}");
+
+        Debug.DrawLine(hackerPoint, doorPoint, Color.blue);
 
         if (distance <= interactionDistance && Input.GetKeyDown(KeyCode.F))
         {
@@ -38,26 +42,31 @@ public class TutorialDoorTile : MonoBehaviour
         }
     }
 
-    GameObject FindClosestPlayerUnit()
+    bool IsThisTheClosestTileTo(GameObject player)
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("PlayerUnit");
-        GameObject closest = null;
-        float minDistance = Mathf.Infinity;
+        DoorTileScript[] allTiles = FindObjectsOfType<DoorTileScript>();
+        float thisDistance = Vector3.Distance(
+            GetClosestEdge(gameObject, player),
+            GetClosestEdge(player, gameObject)
+        );
 
-        foreach (GameObject p in players)
+        foreach (var tile in allTiles)
         {
-            float dist = Vector3.Distance(p.transform.position, transform.position);
-            if (dist < minDistance)
+            if (tile == this) continue;
+
+            float otherDistance = Vector3.Distance(
+                GetClosestEdge(tile.gameObject, player),
+                GetClosestEdge(player, tile.gameObject)
+            );
+
+            if (otherDistance < thisDistance)
             {
-                minDistance = dist;
-                closest = p;
+                return false; // Another tile is closer to the Hacker
             }
         }
 
-        return closest;
+        return true;
     }
-
-
 
     void TryUnlockDoor()
     {
@@ -71,12 +80,12 @@ public class TutorialDoorTile : MonoBehaviour
         {
             if (item.itemData.itemName == requiredItemName && item.quantity > 0)
             {
-                Debug.Log("Correct keycard found! Unlocking tutorial door.");
+                Debug.Log("Correct keycard found! Unlocking door tile.");
 
                 gameObject.tag = "Tile"; // Unlock the tile visually/logically
                 DestroyNearbyWarehouseDoor();
 
-                // ✅ Load the next scene
+                // Scene loading is commented out but available if needed
                 UnityEngine.SceneManagement.SceneManager.LoadScene("WH Main 2");
                 return;
             }
@@ -84,7 +93,6 @@ public class TutorialDoorTile : MonoBehaviour
 
         Debug.Log("Missing required item: " + requiredItemName);
     }
-
 
     void DestroyNearbyWarehouseDoor()
     {
@@ -101,6 +109,7 @@ public class TutorialDoorTile : MonoBehaviour
             {
                 Debug.Log("WarehouseDoor found and destroyed.");
                 Destroy(door);
+                return;
             }
         }
 
@@ -116,6 +125,4 @@ public class TutorialDoorTile : MonoBehaviour
         }
         return source.transform.position;
     }
-
-
 }
