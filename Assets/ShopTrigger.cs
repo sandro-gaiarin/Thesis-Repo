@@ -36,6 +36,7 @@ public class ShopTrigger : MonoBehaviour
         if (other.CompareTag("PlayerUnit")) // Make sure your player is tagged correctly
         {
             playerInRange = true;
+            TooltipUI.ShowMessage("Open the shop with F.");
         }
     }
 

@@ -30,7 +30,8 @@ public class ShopManager : MonoBehaviour
     {
         if (InventoryManager.Instance.SpendCoins(item.price))
         {
-            InventoryManager.Instance.AddItem(item, 1, item); // Adjust to your AddItem method signature
+            InventoryManager.Instance.AddItem(item, 1); // ✅ Corrected
+                                                        // Adjust to your AddItem method signature
             ShopUI.Instance.UpdateCoinDisplay();
             Debug.Log($"Purchased {item.itemName}!");
         }

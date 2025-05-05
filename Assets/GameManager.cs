@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     private int dayOneDocs = 0;
     private int dayTwoDocs = 0;
     private int dayThreeDocs = 0;
-    [SerializeField] private int currentDay = 1; // 1 = Day 1, 2 = Day 2, 3 = Day 3
+    [SerializeField] public int currentDay = 1; // 1 = Day 1, 2 = Day 2, 3 = Day 3
 
     void Awake()
     {

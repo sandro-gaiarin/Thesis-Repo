@@ -1,11 +1,11 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
 public class ShopItemSlot : MonoBehaviour
 {
     public TMP_Text nameText;
-    public TMP_Text priceText;
+    //public TMP_Text priceText;
     public Image iconImage;
     public Button buyButton;
 
@@ -19,7 +19,7 @@ public class ShopItemSlot : MonoBehaviour
         Debug.Log($"Setting up shop slot for: {item.itemName}");
         // Set visual info
         if (nameText) nameText.text = item.itemName;
-        if (priceText) priceText.text = $"{item.price} Coins";
+        //if (priceText) priceText.text = $"{item.price} Coins";
         if (iconImage) iconImage.sprite = item.icon;
 
         // Set click behavior
