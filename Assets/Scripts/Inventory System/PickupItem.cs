@@ -3,16 +3,24 @@ using PixelCrushers.DialogueSystem;
 
 public class PickupItem : MonoBehaviour
 {
-    public ItemData itemData; // Assign in Inspector (e.g., Memo 1)
+    public ItemData itemData; // Assigned by LootDrop or Inspector
+    public int quantity = 1;  // Default quantity
+
     private bool openedInventoryBefore = false;
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("PlayerUnit")) return;
 
-        Debug.Log($"Player picked up: {itemData.itemName}");
+        if (itemData == null)
+        {
+            Debug.LogWarning("PickupItem has no ItemData assigned.");
+            return;
+        }
 
-        string message = itemData.itemName + " added to inventory.";
+        Debug.Log($"Player picked up: {itemData.itemName} x{quantity}");
+
+        string message = $"{itemData.itemName} x{quantity} added to inventory.";
         if (!openedInventoryBefore)
         {
             openedInventoryBefore = true;
@@ -23,7 +31,7 @@ public class PickupItem : MonoBehaviour
 
         if (InventoryManager.Instance != null)
         {
-            InventoryManager.Instance.AddItem(itemData, 1);
+            InventoryManager.Instance.AddItem(itemData, quantity);
 
             if (itemData.itemType == ItemData.ItemType.Quest)
             {

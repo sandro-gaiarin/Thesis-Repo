@@ -23,9 +23,6 @@ public class UnitController : MonoBehaviour
 
     public Material attackHighlightMaterial;
     private List<GameObject> attackHighlightedTiles = new List<GameObject>();
-    [SerializeField] private GameObject consumablesPanel; // Panel that holds all consumables
-    [SerializeField] private Transform buttonContainer; // Where buttons go inside the panel
-    [SerializeField] private GameObject consumableButtonPrefab; // The prefab we made
 
 
     void Start()
@@ -332,7 +329,7 @@ public class UnitController : MonoBehaviour
         InventoryUI.Instance.ShowConsumables(UseConsumableOnSelectedUnit);
     }
 
-    private void UseConsumableOnSelectedUnit(NewInventoryItem item)
+    public void UseConsumableOnSelectedUnit(NewInventoryItem item)
     {
         if (selectedUnit == null) return;
 

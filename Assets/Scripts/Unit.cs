@@ -40,13 +40,17 @@ public class Unit : MonoBehaviour
     public virtual void Die()
     {
         Debug.Log($"{gameObject.name} died.");
-        Destroy(gameObject);
 
-        if (EnemyUIController.Instance != null)
+        // ✅ Drop loot if component is attached
+        LootDrop loot = GetComponent<LootDrop>();
+        if (loot != null)
         {
-            EnemyUIController.Instance.HideEnemyInfo();
+            loot.DropLoot();
         }
+
+        Destroy(gameObject);
     }
+
 
     public void Attack(Unit target)
     {

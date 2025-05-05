@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9033fb496f9b4de408327384012c163d, type: 3}
-  m_Name: Key Card 2
+  m_Name: Key Card 3
   m_EditorClassIdentifier: 
-  itemName: Key Card 2
+  itemName: Key Card 3
   icon: {fileID: 0}
-  description: Which door does this open?
+  description: Which Door does this open?
   price: 0
   itemType: 1
   maxStack: 1

@@ -14,8 +14,8 @@ public class Hacker : Unit
     [SerializeField] private HealthBar _healthBar;
     void Start()
     {
-        _currentHealth = maxHealth;
-        _healthBar.UpdateHealthBar(maxHealth, _currentHealth);
+        //_currentHealth = maxHealth;
+        //_healthBar.UpdateHealthBar(maxHealth, _currentHealth);
         //End of health bar addons bc i didn't wanna mess with any current code - kayla
     }
 

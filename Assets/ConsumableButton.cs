@@ -17,7 +17,7 @@ public class ConsumableButtonUI : MonoBehaviour
 
     public void OnClick()
     {
-        ConsumablesUIManager.Instance.ShowConsumables(selectedUnit);
+        //ConsumablesUIManager.Instance.ShowConsumables(selectedUnit);
 
     }
 }

@@ -16,5 +16,6 @@ MonoBehaviour:
   icon: {fileID: 0}
   description: Which door does this open?
   price: 0
-  itemType: 0
+  itemType: 1
   maxStack: 1
+  healAmount: 0
