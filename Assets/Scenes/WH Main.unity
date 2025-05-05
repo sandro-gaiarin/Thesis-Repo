@@ -3434,7 +3434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 170ac913c82a1a944bac1203efa7a244, type: 2}
-  openedInventoryBefore: 0
+  quantity: 1
 --- !u!65 &641899181
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3515,7 +3515,7 @@ Transform:
   m_GameObject: {fileID: 641899179}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.28, y: 0.503, z: 6.67}
+  m_LocalPosition: {x: 14.16, y: 0.503, z: 0.97}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6866,7 +6866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: cf4d283713d76ca468c0e28b10725bee, type: 2}
-  openedInventoryBefore: 0
+  quantity: 1
 --- !u!135 &1213098776
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7025,6 +7025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5211c8fdc4b0ba242a5331ebffda842d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leaveWarehouseCanvas: {fileID: 0}
 --- !u!23 &1236416593 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 8420665744654157958, guid: f82facc86f7ea8e42b5400348dcc8486, type: 3}
@@ -7733,7 +7734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: bcf2b0f6e890b7346b01bdab60bf129c, type: 2}
-  openedInventoryBefore: 0
+  quantity: 1
 --- !u!65 &1303068538
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8652,7 +8653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 42035be11ef8c8b4582e51c4b1780533, type: 2}
-  openedInventoryBefore: 0
+  quantity: 1
 --- !u!135 &1383577318
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -9357,6 +9358,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0df2818f0d65a1647a471ee3c0e66bdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalDocumentCount: 0
+  dayOneDocs: 0
+  dayTwoDocs: 0
+  dayThreeDocs: 0
   currentDay: 1
 --- !u!4 &1486357316
 Transform:
@@ -11029,7 +11034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 37121c5d2d457564f85ad89083986bba, type: 2}
-  openedInventoryBefore: 0
+  quantity: 1
 --- !u!135 &1698768970
 SphereCollider:
   m_ObjectHideFlags: 0

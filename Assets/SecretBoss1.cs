@@ -20,6 +20,8 @@ public class SecretBoss1 : Unit
     {
         Debug.Log("Secret Boss 1 has died!");
         TooltipUI.ShowMessage("You have defeated the secret boss!");
+        Destroy(gameObject);
+        // Destroy the boss object
         //StartCoroutine(LeaveAfterDelay(5f));
     }
 

@@ -45,6 +45,10 @@ public class ShopTrigger : MonoBehaviour
         if (other.CompareTag("PlayerUnit"))
         {
             playerInRange = false;
+            foreach (Transform child in shopCanvasManager.transform)
+            {
+                child.gameObject.SetActive(false);
+            }
         }
     }
 }

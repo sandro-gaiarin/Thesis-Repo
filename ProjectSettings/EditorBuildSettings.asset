@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/PlayerRoomA1S1.unity
     guid: 13c16e5b95910af4db6a0484df68c17e
   - enabled: 1
+    path: Assets/Scenes/Newspaper.unity
+    guid: 81ae424952b44784fb40e86ab57b3e3c
+  - enabled: 1
     path: Assets/Scenes/PlayerRoomA1S1TEST.unity
     guid: 8385d72f2139e9745a10587b60162fcf
   - enabled: 1
@@ -44,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WH Day 3.unity
     guid: b0a74096d053cd640bea51f0f46258d2
+  - enabled: 1
+    path: Assets/Scenes/PlayerRoomA1S5.unity
+    guid: 0a592fb34825f544ca85a4ab7150e885
   m_configObjects: {}

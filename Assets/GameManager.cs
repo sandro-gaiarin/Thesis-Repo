@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [SerializeField] private int totalDocumentCount = 0;
+    [SerializeField] public int totalDocumentCount = 0;
     [SerializeField] private int dayOneDocs = 0;
     [SerializeField] private int dayTwoDocs = 0;
     [SerializeField] private int dayThreeDocs = 0;

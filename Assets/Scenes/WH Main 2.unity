@@ -3392,6 +3392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: acfa3d7c7ab3a4943b8f57febcdc2383, type: 2}
+  quantity: 1
 --- !u!135 &138760279
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7233,7 +7234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &362369994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7431,6 +7432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 29e3a108367088c459bb42d50faf8756, type: 2}
+  quantity: 1
 --- !u!65 &365205019
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29801,6 +29803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 42035be11ef8c8b4582e51c4b1780533, type: 2}
+  quantity: 1
 --- !u!135 &1383577318
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -37093,6 +37096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 37121c5d2d457564f85ad89083986bba, type: 2}
+  quantity: 1
 --- !u!135 &1698768970
 SphereCollider:
   m_ObjectHideFlags: 0

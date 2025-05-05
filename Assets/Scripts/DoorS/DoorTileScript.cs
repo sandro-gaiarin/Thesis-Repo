@@ -34,7 +34,10 @@ public class DoorTileScript : MonoBehaviour
         Debug.Log($"Distance to Hacker: {distance}");
 
         Debug.DrawLine(hackerPoint, doorPoint, Color.blue);
-
+        if (distance <= interactionDistance)
+        {
+            TooltipUI.ShowMessage("Press F to unlock... if you have the key");
+        }
         if (distance <= interactionDistance && Input.GetKeyDown(KeyCode.F))
         {
             Debug.Log("Interacting with door tile.");

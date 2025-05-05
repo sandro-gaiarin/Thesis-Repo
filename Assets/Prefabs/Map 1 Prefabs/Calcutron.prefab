@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8519966985214768262}
   - component: {fileID: 7959948880754642860}
-  - component: {fileID: 5009013945889847191}
   - component: {fileID: 4811282520986724205}
   - component: {fileID: 8075555949284909955}
   - component: {fileID: 7105488081109737010}
+  - component: {fileID: 2313429710779925244}
   m_Layer: 0
   m_Name: Calcutron
   m_TagString: EnemyUnit
@@ -30,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 71978110820371754}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.16, y: 0.608, z: 10.667}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7504538281974503990}
@@ -61,28 +61,6 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5009013945889847191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 71978110820371754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89141b5370a10854cae5b26209599b48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementPointsPerTurn: 2
-  currentMovementPoints: 0
-  isPlayer: 0
-  attackRange: 1
-  attackDamage: 1
-  health: 30
-  target: {fileID: 0}
-  unitController: {fileID: 0}
-  numberOfActions: 1
-  unitName: Enemy 1
 --- !u!114 &4811282520986724205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +97,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f490ed813639ae4e859f3430fdb4333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2313429710779925244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71978110820371754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b39e6d18043a00648b8234fcad9fbfeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementPointsPerTurn: 3
+  currentMovementPoints: 0
+  isPlayer: 0
+  attackRange: 1
+  attackDamage: 1
+  health: 40
+  target: {fileID: 0}
+  unitController: {fileID: 0}
+  numberOfActions: 1
+  unitName: 
 --- !u!1 &556389486785473861
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +228,7 @@ Transform:
   m_GameObject: {fileID: 8385523716711458774}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.763, z: -5.55}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

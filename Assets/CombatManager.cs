@@ -5,6 +5,7 @@ using System.Collections; // <-- Needed for IEnumerator
 
 public class CombatManager : MonoBehaviour
 {
+    public static CombatManager Instance { get; private set; }
     public static event Action OnCombatTriggered;
     public static event Action OnCombatEnded;
     public bool combatActive = false;
@@ -14,6 +15,16 @@ public class CombatManager : MonoBehaviour
 
     void Awake()
     {
+
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
         // Find ExplorationManager, even if inactive
         explorationManager = FindObjectOfType<ExplorationManager>(true);
         if (explorationManager != null)
