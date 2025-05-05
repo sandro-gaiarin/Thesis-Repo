@@ -4,6 +4,14 @@ using UnityEngine.SceneManagement;
 public class LeaveHub : MonoBehaviour
 {
     public GameObject leaveWarehouseCanvas; // Assign in inspector
+    private GameObject explorationManager;
+    private GameObject combatManagerParent;
+
+    private void Awake()
+    {
+        explorationManager = GameObject.Find("Exploration Manager");
+        combatManagerParent = GameObject.Find("Combat Manager Parent");
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -29,32 +37,25 @@ public class LeaveHub : MonoBehaviour
         }
     }
 
-    // Call this when the player confirms they want to leave
     public void LeaveBasedOnDay()
     {
         int currentDay = GameManager.Instance.currentDay;
+        
 
         switch (currentDay)
         {
             case 1:
-                GameObject explorationManager = GameObject.Find("Exploration Manager");
-                GameObject combatManagerParent = GameObject.Find("Combat Manager Parent");
-
-                if (explorationManager != null)
-                {
-                    Destroy(explorationManager);
-                }
-
-                if (combatManagerParent != null)
-                {
-                    Destroy(combatManagerParent);
-                }
-
+                GameManager.Instance.currentDay = 2;
+                if (explorationManager != null) Destroy(explorationManager);
+                if (combatManagerParent != null) Destroy(combatManagerParent);
                 SceneManager.LoadScene("outsideWarehouse 2");
                 break;
 
             case 2:
-                SceneManager.LoadScene("PlayerRoomA2S3");
+                GameManager.Instance.currentDay = 3;
+                if (explorationManager != null) Destroy(explorationManager);
+                if (combatManagerParent != null) Destroy(combatManagerParent);
+                SceneManager.LoadScene("outsideWarehouse3");
                 break;
 
             case 3:
@@ -67,8 +68,6 @@ public class LeaveHub : MonoBehaviour
         }
     }
 
-
-    // Optional cancel function
     public void DontLeave()
     {
         if (leaveWarehouseCanvas != null)

@@ -801,6 +801,10 @@ PrefabInstance:
       propertyPath: initialDatabase
       value: 
       objectReference: {fileID: 11400000, guid: 1b8a99a6f9229e140b8587b5c973362d, type: 2}
+    - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: displaySettings.subtitleSettings.minSubtitleSeconds
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1604,7 +1608,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 615868865}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LeaveWarehouse, Assembly-CSharp
         m_MethodName: DontLeave
         m_Mode: 1
@@ -1794,7 +1798,6 @@ GameObject:
   m_Component:
   - component: {fileID: 615868867}
   - component: {fileID: 615868866}
-  - component: {fileID: 615868865}
   - component: {fileID: 615868864}
   m_Layer: 0
   m_Name: LeaveHub
@@ -1813,19 +1816,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17b349712533f4743850588a5c8f9385, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leaveWarehouseCanvas: {fileID: 1115957237}
---- !u!114 &615868865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 615868863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5211c8fdc4b0ba242a5331ebffda842d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   leaveWarehouseCanvas: {fileID: 1115957237}
@@ -1960,6 +1950,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0df2818f0d65a1647a471ee3c0e66bdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalDocumentCount: 0
+  dayOneDocs: 0
+  dayTwoDocs: 0
+  dayThreeDocs: 0
   currentDay: 1
 --- !u!4 &651014326
 Transform:

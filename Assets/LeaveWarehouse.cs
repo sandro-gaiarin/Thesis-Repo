@@ -55,7 +55,7 @@ public class LeaveWarehouse : MonoBehaviour
                 SceneManager.LoadScene("PlayerRoomA1S3");
                 break;
             case 2:
-                SceneManager.LoadScene("PlayerRoomA2S3");
+                SceneManager.LoadScene("PlayerRoomA1S4");
                 break;
             case 3:
                 SceneManager.LoadScene("PlayerRoomA3S3");

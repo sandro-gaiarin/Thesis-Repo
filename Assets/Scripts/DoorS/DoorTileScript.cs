@@ -20,6 +20,7 @@ public class DoorTileScript : MonoBehaviour
 
     void Update()
     {
+
         hacker = GameObject.Find("Hacker");
         if (hacker == null) return;
 
@@ -69,6 +70,7 @@ public class DoorTileScript : MonoBehaviour
 
     void TryUnlockDoor()
     {
+        
         if (InventoryManager.Instance == null)
         {
             Debug.LogError("InventoryManager instance not found!");
