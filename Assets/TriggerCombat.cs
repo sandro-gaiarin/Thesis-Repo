@@ -8,6 +8,7 @@ public class TriggerCombat : MonoBehaviour
 
     public GameObject CombatManagerParent;
     public GameObject ExplorationManager;
+    public GameObject combatManager;
     // Start is called before the first frame update
 
     void Awake()
@@ -24,7 +25,8 @@ public class TriggerCombat : MonoBehaviour
             return;
         }
 
-        CombatManagerParent = GameObject.Find("Combat Manager");
+        CombatManagerParent = GameObject.Find("Combat Manager Parent");
+        combatManager = GameObject.Find("Combat Manager");
         ExplorationManager = GameObject.Find("Exploration Manager");
     }
     void Start()
@@ -37,6 +39,8 @@ public class TriggerCombat : MonoBehaviour
         foreach (Transform child in CombatManagerParent.transform)
         {
             child.gameObject.SetActive(true);
+            combatManager.GetComponent<CombatManager>().TriggerCombat();
+
         }
 
         ExplorationManager.SetActive(false);

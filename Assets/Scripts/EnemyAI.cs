@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,6 +30,7 @@ public class EnemyAI : MonoBehaviour
 
         SnapToNearestWalkableTile();
         GeneratePatrolPoints();
+        ManualInitialize();
     }
 
     private void Update()
@@ -64,6 +65,19 @@ public class EnemyAI : MonoBehaviour
                 patrolRoutine = null;
             }
         }
+    }
+    public bool IsNearPlayerForCombat()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("PlayerUnit");
+        foreach (GameObject player in players)
+        {
+            float distance = Vector3.Distance(transform.position, player.transform.position);
+            if (distance < 3.0f) // Adjust this threshold as needed
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 
@@ -231,11 +245,31 @@ public class EnemyAI : MonoBehaviour
             float distance = Vector3.Distance(transform.position, player.transform.position);
             if (distance < 2.0f)
             {
+                if (TriggerCombat.Instance != null)
+                {
+                    TriggerCombat.Instance.TriggerCombatStart(); // ✅ Activates CombatManagerParent and disables Exploration
+                }
+                else
+                {
+                    Debug.LogWarning("TriggerCombat.Instance is null — cannot activate combat UI.");
+                }
+
+                if (combatManager != null)
+                {
+                    combatManager.TriggerCombat(); // ✅ Starts logic flow of combat
+                }
+                else
+                {
+                    Debug.LogWarning("CombatManager is null — cannot trigger combat logic.");
+                }
+
                 return true;
             }
         }
         return false;
     }
+
+
 
     public IEnumerator EnemyTurn()
     {
@@ -381,4 +415,17 @@ public class EnemyAI : MonoBehaviour
 
         return false;
     }
+
+    public void ManualInitialize()
+    {
+        gridManager = FindObjectOfType<GridManager>();
+        unit = GetComponent<Unit>();
+        combatManager = FindObjectOfType<CombatManager>();
+        explorationManager = FindObjectOfType<ExplorationManager>();
+
+        SnapToNearestWalkableTile();
+        GeneratePatrolPoints();
+        snappedToTile = true;
+    }
+
 }

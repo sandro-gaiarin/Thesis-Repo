@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlayerRoomHUB.unity
     guid: df8110f5f94174f4995460d82693ae38
+  - enabled: 1
+    path: Assets/Scenes/WH Day 2.unity
+    guid: 7e9f8e73544b4f44490e7713a1eeac42
   m_configObjects: {}

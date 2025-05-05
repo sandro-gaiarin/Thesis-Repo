@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
     {
         List<Vector2Int> walkablePositions = new List<Vector2Int>();
 
-        // Build list of walkable tiles
+        // Gather all walkable tile coordinates
         foreach (Transform tile in gridManager.transform)
         {
             Labeller labeller = tile.GetComponent<Labeller>();
@@ -30,29 +30,37 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        int enemyCount = Random.Range(1, 6); // 1 to 5 enemies
+        int enemyCount = Random.Range(1, 6); // Spawn between 1 and 5 enemies
 
         for (int i = 0; i < enemyCount && walkablePositions.Count > 0; i++)
         {
             int index = Random.Range(0, walkablePositions.Count);
             Vector2Int spawnPosition = walkablePositions[index];
-            walkablePositions.RemoveAt(index); // avoid duplicates
+            walkablePositions.RemoveAt(index); // Avoid duplicate positions
 
             Vector3 worldPos = new Vector3(
                 spawnPosition.x * gridManager.UnityGridSize,
-                .5f,
+                0.5f,
                 spawnPosition.y * gridManager.UnityGridSize
             );
 
             GameObject enemy = Instantiate(enemyPrefab, worldPos, Quaternion.identity);
 
-            // ✅ Assign numbered name to unit
+            // Name the enemy
             Unit unit = enemy.GetComponent<Unit>();
             if (unit != null)
             {
                 unit.unitName = $"Enemy {i + 1}";
-                enemy.name = unit.unitName; // optional: rename GameObject too
+                enemy.name = unit.unitName;
+            }
+
+            // Manually initialize AI
+            EnemyAI ai = enemy.GetComponent<EnemyAI>();
+            if (ai != null)
+            {
+                ai.ManualInitialize();
             }
         }
     }
 }
+

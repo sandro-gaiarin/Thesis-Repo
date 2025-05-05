@@ -35,24 +35,40 @@ public class TurnManager : MonoBehaviour
             Debug.LogError("CombatManager not found!");
         }
 
-
         enemyUnits = new List<Unit>();
 
         GameObject[] enemyUnitsGameObjects = GameObject.FindGameObjectsWithTag("EnemyUnit");
         foreach (GameObject unitObj in enemyUnitsGameObjects)
         {
             Unit unit = unitObj.GetComponent<Unit>();
-            if (unit != null)
+            EnemyAI ai = unitObj.GetComponent<EnemyAI>();
+            if (unit != null && ai != null && ai.IsNearPlayerForCombat())
             {
                 enemyUnits.Add(unit);
             }
         }
 
-        // Start the game with the player's turn
         currentState = TurnState.PlayerTurn;
         ResetPlayerUnits();
         StartPlayerTurn();
     }
+
+    private void RefreshEnemyUnits()
+    {
+        enemyUnits.Clear();
+
+        GameObject[] enemyUnitsGameObjects = GameObject.FindGameObjectsWithTag("EnemyUnit");
+        foreach (GameObject unitObj in enemyUnitsGameObjects)
+        {
+            Unit unit = unitObj.GetComponent<Unit>();
+            EnemyAI ai = unitObj.GetComponent<EnemyAI>();
+            if (unit != null && ai != null && ai.IsNearPlayerForCombat())
+            {
+                enemyUnits.Add(unit);
+            }
+        }
+    }
+
 
     void Update()
     {
@@ -74,20 +90,6 @@ public class TurnManager : MonoBehaviour
         return true; // All player units are out of movement points
     }
 
-    private void RefreshEnemyUnits()
-    {
-        enemyUnits.Clear();
-
-        GameObject[] enemyUnitsGameObjects = GameObject.FindGameObjectsWithTag("EnemyUnit");
-        foreach (GameObject unitObj in enemyUnitsGameObjects)
-        {
-            Unit unit = unitObj.GetComponent<Unit>();
-            if (unit != null)
-            {
-                enemyUnits.Add(unit);
-            }
-        }
-    }
 
 
     public void EndPlayerTurn()

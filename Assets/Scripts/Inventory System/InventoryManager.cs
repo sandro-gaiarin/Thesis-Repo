@@ -27,6 +27,30 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        if (inventoryCanvas != null)
+        {
+            //inventoryCanvas.SetActive(false);
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            menuActivated = !menuActivated;
+            if (inventoryCanvas != null)
+            {
+                inventoryCanvas.SetActive(menuActivated);
+            }
+            InventoryUI.Instance?.ToggleInventory(); // ✅ Correct
+
+        }
+    }
+
+
+
     public void AddItem(ItemData itemData, int quantity)
     {
         Debug.Log($"Adding {quantity}x {itemData.itemName} to inventory");

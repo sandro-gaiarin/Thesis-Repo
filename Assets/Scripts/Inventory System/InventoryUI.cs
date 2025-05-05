@@ -74,6 +74,7 @@ public class InventoryUI : MonoBehaviour
             Debug.Log("I key pressed!");
             ToggleInventory();
             RefreshUI();
+            inventory = InventoryManager.Instance;
         }
     }
 
